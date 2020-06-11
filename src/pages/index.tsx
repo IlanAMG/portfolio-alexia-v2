@@ -1,69 +1,40 @@
 // Gatsby supports TypeScript natively!
-import React from "react"
-import { PageProps, Link, graphql } from "gatsby"
+import React, { useState, useEffect } from "react"
+import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
+import '../style/style.css'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import { Loading } from '../components/Loading/Loading';
+import { onLoad } from '../../gatsby-browser';
 
-type Data = {
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
-  allMarkdownRemark: {
-    edges: {
-      node: {
-        excerpt: string
-        frontmatter: {
-          title: string
-          date: string
-          description: string
-        }
-        fields: {
-          slug: string
-        }
-      }
-    }[]
-  }
-}
-
-const BlogIndex = ({ data, location }: PageProps<Data>) => {
+const BlogIndex = ({ data, location }) => {
+  const [loading, setLoading] = useState(false)
+  const [opacityLoading, setOpacityLoading] = useState(false)
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
+
+  useEffect(() => {
+      setTimeout(() => {
+        setOpacityLoading(true)
+      }, 3400)
+      document.body.style.overflow = 'hidden';
+      document.body.style.height = '100vh';
+
+      setTimeout(() => {
+        setLoading(true)
+        document.body.style.overflow = 'unset';
+        document.body.style.height = 'auto';
+      }, 3900)
+  }, [onLoad])
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
-        )
-      })}
+        {/* {
+          !loading && */}
+          <Loading />
+        {/* } */}
     </Layout>
   )
 }
