@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 const vague = keyframes`
     from {             
-        top: 200px;
+        top: 230px;
         right: 0;    
     }
 
