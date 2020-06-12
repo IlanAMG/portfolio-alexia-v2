@@ -55,3 +55,30 @@ small {
     font-family: 'Heebo', sans-serif;
     font-weight: 300;
 }
+
+/* /////////////////////////////////// */
+/* //////////// SCROLLBAR ////////////// */
+/* ///////////////////////////////////// */
+
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 0px;
+}
+::-webkit-scrollbar-track-piece {
+    width: 0px;
+}
+
+::-webkit-scrollbar-corner {
+    width: 0px;
+}
+::-webkit-scrollbar:horizontal {
+    display: none;
+}
+
+.test {
+    z-index: 10000;
+}

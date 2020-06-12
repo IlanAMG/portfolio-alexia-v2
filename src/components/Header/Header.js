@@ -1,6 +1,7 @@
 import React from 'react'
 import { Spring } from "react-spring/renderprops";
 
+import { BtnMenu } from '../BtnMenu/BtnMenu';
 import StyledHeader from './StyledHeader'
 import VisibilitySensor from '../../utils/VisibilitySensor';
 
@@ -25,6 +26,7 @@ export const Header = () => {
                     </Spring>
                 )}
             </VisibilitySensor>
+            <BtnMenu />
             <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={3600} delayedCall once>
                 {({ isVisible }) => (
                     <Spring
@@ -35,8 +37,8 @@ export const Header = () => {
                                 : "translateY(-50px)",
                         }}>
                         {(props) => (
-            <div style={{...props}} className='separator' />
-            )}
+                            <div style={{ ...props }} className='separator' />
+                        )}
                     </Spring>
                 )}
             </VisibilitySensor>
