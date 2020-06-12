@@ -10,31 +10,36 @@ import { onLoad } from '../../gatsby-browser';
 
 const BlogIndex = ({ data, location }) => {
   const [loading, setLoading] = useState(false)
+  const [pageLoad, setPageLoad] = useState(false)
   const [opacityLoading, setOpacityLoading] = useState(false)
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
   useEffect(() => {
-      setTimeout(() => {
-        setOpacityLoading(true)
-      }, 3400)
-      document.body.style.overflow = 'hidden';
-      document.body.style.height = '100vh';
-
-      setTimeout(() => {
-        setLoading(true)
-        document.body.style.overflow = 'unset';
-        document.body.style.height = 'auto';
-      }, 3900)
+    if (onLoad) {
+      setPageLoad(true)
+        setTimeout(() => {
+          setOpacityLoading(true)
+        }, 3400)
+        document.body.style.overflow = 'hidden';
+        document.body.style.height = '100vh';
+  
+        setTimeout(() => {
+          setLoading(true)
+          document.body.style.overflow = 'unset';
+          document.body.style.height = 'auto';
+        }, 3900)
+    }
   }, [onLoad])
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-        {/* {
-          !loading && */}
-          <Loading />
-        {/* } */}
+        {
+          !loading && pageLoad &&
+          
+          <Loading opacityLoading={opacityLoading} />
+        }
     </Layout>
   )
 }

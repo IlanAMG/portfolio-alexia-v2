@@ -43,7 +43,7 @@ const StyledLoading = styled.section`
             line-height: 59px;
         }
 
-        small {
+        .devtrotter-small {
             position: absolute;
             bottom: 1.8vh;
             left: 2.6vw;

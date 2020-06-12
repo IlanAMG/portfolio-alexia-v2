@@ -23,7 +23,6 @@ const StyledCircle = styled.div`
     justify-content: center;
     transform-origin: center center;
     overflow: hidden;
-    ${'' /* background-image: ${({url}) => `url(${url})`}; */}
 
     ${(props) => props.num === 1 && css`
         left: 11.87vw;
