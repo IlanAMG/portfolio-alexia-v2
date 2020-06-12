@@ -6,6 +6,7 @@ import '../style/style.css'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Loading } from '../components/Loading/Loading';
+import { PagePhotography } from '../components/PagePhotography/PagePhotography';
 import { onLoad } from '../../gatsby-browser';
 
 const BlogIndex = ({ data, location }) => {
@@ -40,6 +41,7 @@ const BlogIndex = ({ data, location }) => {
           
           <Loading opacityLoading={opacityLoading} />
         }
+        <PagePhotography />
     </Layout>
   )
 }

@@ -16,7 +16,7 @@ export const Loading = ({ opacityLoading }) => {
 
     return (
         <StyledLoading finish={opacityLoading} >
-            <VisibilitySensor partialVisiblity offset={{ top: -100 }} intervalDelay={200} delayedCall once>
+            <VisibilitySensor partialVisiblity offset={{ top: -100 }} intervalDelay={500} delayedCall once>
                 {({ isVisible }) => (
                     <Spring
                         to={{
