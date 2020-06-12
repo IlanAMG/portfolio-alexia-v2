@@ -1,9 +1,9 @@
 import React from 'react'
 import { Spring } from "react-spring/renderprops";
 
+import VisibilitySensor from '../../utils/VisibilitySensor';
 import { BtnMenu } from '../BtnMenu/BtnMenu';
 import StyledHeader from './StyledHeader'
-import VisibilitySensor from '../../utils/VisibilitySensor';
 
 export const Header = () => {
     return (

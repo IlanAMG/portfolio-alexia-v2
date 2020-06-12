@@ -1,4 +1,13 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const fadeIn = keyframes`
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+`
 
 const StyledPagePhotography = styled.section`
     width: 100vw;
@@ -16,12 +25,17 @@ const StyledPagePhotography = styled.section`
             min-width: 100vw;
             margin-top: 18.75vh;
             display: flex;
-            transform: translateX(${({ translateX }) => `${translateX}px`});
+            animation: ${fadeIn} 800ms linear forwards;
+            animation-delay: 3.9s;
+            opacity: 0;
         }
         .caroussel img {
             height: 100%;
             margin: 0 45px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+            animation: ${fadeIn} 800ms linear forwards;
+            animation-delay: 3.9s;
+            opacity: 0;
         }
 
 `
