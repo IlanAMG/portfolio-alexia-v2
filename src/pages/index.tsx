@@ -41,7 +41,10 @@ const BlogIndex = ({ data, location }) => {
           
           <Loading opacityLoading={opacityLoading} />
         }
-        <PagePhotography />
+        {
+          pageLoad &&
+          <PagePhotography />
+        }
     </Layout>
   )
 }
