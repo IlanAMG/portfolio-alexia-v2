@@ -15,7 +15,7 @@ const StyledPagePhotography = styled.section`
     position: fixed;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     background: linear-gradient(180deg, #E9D6FF 0%, #F1E5FF 45.79%, #F1E5FF 67.69%, #FFFFFF 127.41%);
     overflow-Y: hidden;
     overflow-X: scroll;
@@ -23,7 +23,6 @@ const StyledPagePhotography = styled.section`
         .caroussel {
             height: 62.5%;
             min-width: 100vw;
-            margin-top: 18.75vh;
             display: flex;
             animation: ${fadeIn} 800ms linear forwards;
             animation-delay: 3.9s;

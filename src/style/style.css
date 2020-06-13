@@ -78,7 +78,3 @@ small {
 ::-webkit-scrollbar:horizontal {
     display: none;
 }
-
-.test {
-    z-index: 10000;
-}
