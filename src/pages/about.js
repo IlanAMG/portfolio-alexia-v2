@@ -8,10 +8,10 @@ const About = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
-    // <Layout location={location} title={siteTitle}>
-    //   <SEO title="about" />
+    <Layout location={location} title={siteTitle}>
+      <SEO title="about" />
       <h1>about</h1>
-    // </Layout>
+    </Layout>
   )
 }
 

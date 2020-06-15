@@ -1,5 +1,5 @@
 // Gatsby supports TypeScript natively!
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 
 import '../style/style.css'
@@ -9,19 +9,13 @@ import { Loading } from '../components/Loading/Loading';
 import { PagePhotography } from '../components/PagePhotography/PagePhotography';
 import { PageNavigation } from '../components/PageNavigation/PageNavigation';
 import { onLoad } from '../../gatsby-browser';
-import Context from '../utils/context';
 
 const BlogIndex = ({ data, location }) => {
-  const [loadingFinish, setLoadingFinish] = useState(false)
-  const [navIsOpen, setNavIsOpen] = useState(false)
-  const [openNavTransiFinish, setOpenNavTransiFinish] = useState(false)
   const [loading, setLoading] = useState(false)
   const [pageLoad, setPageLoad] = useState(false)
   const [opacityLoading, setOpacityLoading] = useState(false)
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
-
-  let timer = useRef(null)
 
   useEffect(() => {
     if (onLoad) {
@@ -40,42 +34,16 @@ const BlogIndex = ({ data, location }) => {
     }
   }, [onLoad])
 
-
-  useEffect(() => {
-    setTimeout(() => {
-        setLoadingFinish(true)
-    }, 4500)
-  }, [])
-
-  useEffect(() => {
-    if (navIsOpen) {
-        timer.current = setTimeout(() => {
-          setOpenNavTransiFinish(true)
-        }, 1000)
-    } else {
-        clearTimeout(timer.current)
-          setOpenNavTransiFinish(false);
-    }
-}, [navIsOpen])
-
   return (
-    <Context.Provider value={{navIsOpen, setNavIsOpen, loadingFinish }}>
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
           {
             !loading && pageLoad &&
             <Loading opacityLoading={opacityLoading} />
           }
-          {
-            pageLoad && !openNavTransiFinish &&
-            <PagePhotography />
-          }
-          {
-            openNavTransiFinish &&
-            <PageNavigation />
-          }
+          <PagePhotography pageLoad={pageLoad} />
+          <PageNavigation />
       </Layout>
-    </Context.Provider>
   )
 }
 

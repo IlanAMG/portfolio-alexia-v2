@@ -10,12 +10,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const { previous, next } = pageContext
 
   return (
-    // <Context.Provider value={{navIsOpen, setNavIsOpen, loadingFinish }}>
-    // <Layout location={location} title={siteTitle}>
-    //   <SEO
-    //     title={post.frontmatter.title}
-    //     description={post.frontmatter.description || post.excerpt}
-    //   />
+    <Layout location={location} title={siteTitle}>
+      <SEO
+        title={post.frontmatter.title}
+        description={post.frontmatter.description || post.excerpt}
+      />
     <div>
       <article>
         <header>
@@ -52,8 +51,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         </ul>
       </nav>
       </div>
-    //</Layout>
-    //</Context.Provider> *
+    </Layout>
   )
 }
 

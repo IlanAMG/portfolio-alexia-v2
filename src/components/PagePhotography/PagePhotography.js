@@ -4,8 +4,8 @@ import { SvgScrollToAnimate } from '../SvgScrollToAnimate/SvgScrollToAnimate';
 import { ContainerArrowNav } from '../ContainerArrowNav/ContainerArrowNav';
 import Context from '../../utils/context';
 
-export const PagePhotography = () => {
-    const { navIsOpen, loadingFinish } = useContext(Context)
+export const PagePhotography = ({ pageLoad }) => {
+    const { navIsOpen, loadingFinish, openNavTransiFinish } = useContext(Context)
     let caroussel = useRef(null)
     let timer = useRef(null)
     const [carousselScrollLeft, setCarousselScrollLeft] = useState(0)
@@ -74,13 +74,14 @@ export const PagePhotography = () => {
             caroussel.current.scrollLeft = currentScrollDelta + (e.deltaX * 0.60);
         }
     }
-
     useEffect(() => {
-        if (caroussel.current.scrollLeft !== null) {
-            if (caroussel.current.scrollLeft === 0) {
-                caroussel.current.scrollLeft = caroussel.current.scrollWidth / 3
-            } else if (caroussel.current.scrollLeft >= caroussel.current.scrollWidth * 0.67) {
-                caroussel.current.scrollLeft = caroussel.current.scrollWidth / 3
+        if (pageLoad) {
+            if (caroussel.current.scrollLeft !== null) {
+                if (caroussel.current.scrollLeft === 0) {
+                    caroussel.current.scrollLeft = caroussel.current.scrollWidth / 3
+                } else if (caroussel.current.scrollLeft >= caroussel.current.scrollWidth * 0.67) {
+                    caroussel.current.scrollLeft = caroussel.current.scrollWidth / 3
+                }
             }
         }
     }, [carousselScrollLeft])
@@ -103,6 +104,7 @@ export const PagePhotography = () => {
     }, [navIsOpen])
 
     return (
+        pageLoad && !openNavTransiFinish &&
         <StyledPagePhotography ref={caroussel} navIsOpen={navIsOpen} loadingFinish={loadingFinish} >
             {imgDisapear === false &&
                 <div className='caroussel transiOff'>

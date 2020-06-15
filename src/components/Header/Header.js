@@ -10,7 +10,7 @@ export const Header = () => {
     const { navIsOpen, loadingFinish } = useContext(Context)
 
     return (
-        <StyledHeader navIsOpen={navIsOpen} loadingFinish={loadingFinish}>
+        <StyledHeader navIsOpen={navIsOpen} loadingFinish={loadingFinish} >
             <div className='circle transiOff' />
             <VisibilitySensor partialVisiblity offset={{ top: -50 }} delayedCall once>
                 {({ isVisible }) => (
