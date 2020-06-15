@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Spring } from "react-spring/renderprops";
 
 import VisibilitySensor from '../../utils/VisibilitySensor';
 import StyledBtnMenu from './StyledBtnMenu'
+import Context from '../../utils/context';
 
 export const BtnMenu = () => {
-    const [openNav, setOpenNav] = useState(false)
+    const { navIsOpen, setNavIsOpen } = useContext(Context)
     return (
         <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={3900} delayedCall once>
             {({ isVisible }) => (
@@ -17,8 +18,8 @@ export const BtnMenu = () => {
                             : "translateY(-50px)",
                     }}>
                     {(props) => (
-                        <StyledBtnMenu style={{ ...props }} onClick={() => setOpenNav(openNav => !openNav)}>
-                            <div className={openNav ? 'wrapper-menu wrapper-croix' : 'wrapper-menu'}>
+                        <StyledBtnMenu style={{ ...props }} onClick={() => setNavIsOpen(navIsOpen => !navIsOpen)}>
+                            <div className={navIsOpen ? 'wrapper-menu wrapper-croix' : 'wrapper-menu'}>
                                 <div className='ligne' />
                             </div>
                         </StyledBtnMenu>

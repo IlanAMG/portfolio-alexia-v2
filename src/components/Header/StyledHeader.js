@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
 const fadeIn = keyframes`
     from {
@@ -8,9 +8,20 @@ const fadeIn = keyframes`
         opacity: 1
     }
 `
+const fadeOff = keyframes`
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+`
 
 const StyledHeader = styled.header`
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
     width: 100%;
     height: 80px;
     display: flex;
@@ -25,6 +36,7 @@ const StyledHeader = styled.header`
             background: #121212;
             z-index: 2;
             opacity: 0.5;
+            transition: 80ms;
         }
 
         .circle {
@@ -40,7 +52,7 @@ const StyledHeader = styled.header`
             top: -20.75vh;
             z-index: 1;
             animation: ${fadeIn} 1.3s linear forwards;
-            animation-delay: 3.6s;
+            animation-delay: ${({loadingFinish}) => loadingFinish ? '0s' : '3.6s'};
             opacity: 0;
         }
 
@@ -69,7 +81,24 @@ const StyledHeader = styled.header`
             text-transform: uppercase;
             font-weight: 100;
             color: #121212;
+            transition: 80ms;
         }
+
+        ${(props) => props.navIsOpen === true && css`
+            .separator.transiOff {
+                opacity: 0 !important;
+                transition: 500ms;
+            }
+            .circle.transiOff {
+                animation: ${fadeOff} 0.1s linear forwards;
+                animation-delay: 0s !important;
+            }
+            .container-title h2.transiOff {
+                opacity: 0 !important;
+                transition: 500ms;
+            }
+            
+        `}
 `
 
 export default StyledHeader

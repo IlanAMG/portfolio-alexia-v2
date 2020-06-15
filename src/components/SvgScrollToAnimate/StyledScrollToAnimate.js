@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
 const rotate = keyframes`
     from {
@@ -15,6 +15,12 @@ const StyledScrollToAnimate = styled.svg`
     left: 40px;
     animation: ${rotate} 8s linear infinite;
     z-index: -1;
+    transition: 80ms;
+
+    ${(props) => props.navIsOpen === true && css`
+        opacity: 0;
+        transition: 500ms;
+    `}
 `
 
 export default StyledScrollToAnimate
