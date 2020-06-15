@@ -14,10 +14,10 @@ import Context from '../utils/context';
 const BlogIndex = ({ data, location }) => {
   const [loadingFinish, setLoadingFinish] = useState(false)
   const [navIsOpen, setNavIsOpen] = useState(false)
+  const [openNavTransiFinish, setOpenNavTransiFinish] = useState(false)
   const [loading, setLoading] = useState(false)
   const [pageLoad, setPageLoad] = useState(false)
   const [opacityLoading, setOpacityLoading] = useState(false)
-  const [openNavTransiFinish, setOpenNavTransiFinish] = useState(false)
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Spring } from "react-spring/renderprops";
 
 import VisibilitySensor from '../../utils/VisibilitySensor';

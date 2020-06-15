@@ -16,12 +16,10 @@ const Layout = ({ location, title, children }) => {
   }
 
   return (
-    <div>
+    <>
       <Header />
       <main>{children}</main>
-      <footer>
-      </footer>
-    </div>
+    </>
   )
 }
 
