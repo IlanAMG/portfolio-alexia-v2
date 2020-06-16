@@ -20,7 +20,7 @@ const reducer = (state, action) => {
     }
 }
 
-const GlobalContextProvider = ({ children }) => {
+export const GlobalContextProvider = ({ children }) => {
     const [state, dispatch] = React.useReducer(reducer, initialState)
     return (
         <GlobalStateContext.Provider value={state}>
@@ -30,5 +30,3 @@ const GlobalContextProvider = ({ children }) => {
         </GlobalStateContext.Provider>
     )
 }
-
-export default GlobalContextProvider
