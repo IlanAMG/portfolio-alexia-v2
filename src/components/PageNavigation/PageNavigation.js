@@ -4,18 +4,23 @@ import { Link } from 'gatsby'
 import Context from '../../utils/context';
 
 export const PageNavigation = () => {
-    const { openNavTransiFinish } = useContext(Context)
+    const { openNavTransiFinish, setNavIsOpen } = useContext(Context)
+
+    const handleClick = () => {
+        setNavIsOpen(false)
+    }
+
     return (
         openNavTransiFinish && 
         <StyledPageNavigation>
-            <div>
-                <Link to='/'>PHOTOGRAPHY</Link>
+            <div className='container-lien' >
+                <Link onClick={handleClick} to='/'>PHOTOGRAPHY</Link>
             </div>
-            <div>
-                <Link to='/videos'>VIDEOS</Link>
+            <div className='container-lien' >
+                <Link onClick={handleClick} to='/videos'>VIDEOS</Link>
             </div>
-            <div>
-                <Link to='/about'>ABOUT</Link>
+            <div className='container-lien' >
+                <Link onClick={handleClick} to='/about'>ABOUT</Link>
             </div>
         </StyledPageNavigation>
     )

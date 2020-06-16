@@ -13,7 +13,7 @@ const Layout = ({ location, title, children }) => {
   let timer = useRef(null)
 
   if (location.pathname === rootPath) {
-    title = ''
+    title = 'PHOTOGRAPHY'
   } else if (location.pathname === '/about') {
     title = 'ABOUT'
   } else if (location.pathname === '/videos') {
@@ -23,16 +23,20 @@ const Layout = ({ location, title, children }) => {
   }
 
   useEffect(() => {
-    setTimeout(() => {
+    if (location.pathname === rootPath) {
+      setTimeout(() => {
         setLoadingFinish(true)
-    }, 4500)
+      }, 4500)
+    } else {
+        setLoadingFinish(true)
+    }
   }, [])
 
   useEffect(() => {
     if (navIsOpen) {
         timer.current = setTimeout(() => {
           setOpenNavTransiFinish(true)
-        }, 1000)
+        }, 600)
     } else {
         clearTimeout(timer.current)
           setOpenNavTransiFinish(false);
@@ -40,8 +44,8 @@ const Layout = ({ location, title, children }) => {
 }, [navIsOpen])
 
   return (
-    <Context.Provider value={{navIsOpen, setNavIsOpen, loadingFinish, openNavTransiFinish }} >
-      <Header />
+    <Context.Provider value={{setLoadingFinish, navIsOpen, setNavIsOpen, loadingFinish, openNavTransiFinish }} >
+      <Header title={title} location={location} rootPath={rootPath} />
       <main>{children}</main>
     </Context.Provider>
   )

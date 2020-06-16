@@ -1,11 +1,12 @@
-import React, { useRef, useEffect, useState, useContext } from 'react'
-import StyledPagePhotography from './StyledPagePhotography';
-import { SvgScrollToAnimate } from '../SvgScrollToAnimate/SvgScrollToAnimate';
-import { ContainerArrowNav } from '../ContainerArrowNav/ContainerArrowNav';
-import Context from '../../utils/context';
+import React, { useState, useEffect, useRef, useContext} from 'react'
 
-export const PagePhotography = ({ pageLoad }) => {
-    const { navIsOpen, loadingFinish, openNavTransiFinish } = useContext(Context)
+import StyledPageVideos from './StyledPageVideos';
+import Context from '../../utils/context';
+import { ContainerArrowNav } from '../ContainerArrowNav/ContainerArrowNav';
+import { SvgScrollToAnimate } from '../SvgScrollToAnimate/SvgScrollToAnimate';
+
+export const PageVideos = () => {
+    const { navIsOpen, loadingFinish, openNavTransiFinish, setLoadingFinish } = useContext(Context)
     let caroussel = useRef(null)
     let timer = useRef(null)
     const [carousselScrollLeft, setCarousselScrollLeft] = useState(0)
@@ -74,8 +75,13 @@ export const PagePhotography = ({ pageLoad }) => {
             caroussel.current.scrollLeft = currentScrollDelta + (e.deltaX * 0.60);
         }
     }
+
     useEffect(() => {
-        if (pageLoad && !navIsOpen) {
+        setLoadingFinish(true)
+      }, [])
+      
+    useEffect(() => {
+        if (!navIsOpen) {
             if (caroussel.current.scrollLeft !== null) {
                 if (caroussel.current.scrollLeft === 0) {
                     caroussel.current.scrollLeft = caroussel.current.scrollWidth / 3
@@ -89,6 +95,7 @@ export const PagePhotography = ({ pageLoad }) => {
     useEffect(() => {
         window.addEventListener('wheel', onMouseWheel, {passive: false})
     }, [navIsOpen])
+
     useEffect(() => {
         if (navIsOpen) {
             window.removeEventListener('wheel', onMouseWheel)
@@ -108,8 +115,7 @@ export const PagePhotography = ({ pageLoad }) => {
     }, [navIsOpen])
 
     return (
-        pageLoad && !openNavTransiFinish &&
-        <StyledPagePhotography ref={caroussel} navIsOpen={navIsOpen} loadingFinish={loadingFinish} >
+        <StyledPageVideos ref={caroussel} navIsOpen={navIsOpen} loadingFinish={loadingFinish} >
             {imgDisapear === false &&
                 <div className='caroussel transiOff'>
                     <img alt='test' src='https://i.imgur.com/2kYt363.jpg' />
@@ -128,6 +134,6 @@ export const PagePhotography = ({ pageLoad }) => {
             }
             <ContainerArrowNav navIsOpen={navIsOpen} loadingFinish={loadingFinish} handleClickNext={handleClickNext} handleClickPrev={handleClickPrev}/>
             <SvgScrollToAnimate navIsOpen={navIsOpen} loadingFinish={loadingFinish} />
-        </StyledPagePhotography>
+        </StyledPageVideos>
     )
 }

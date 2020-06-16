@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { PageNavigation } from '../components/PageNavigation/PageNavigation';
+import { PageVideos } from '../components/PageVideos/PageVideos';
 
 const Videos = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -10,7 +12,8 @@ const Videos = ({ data, location }) => {
   return (
       <Layout location={location} title={siteTitle}>
         <SEO title="videos" />
-          <h1>videos</h1>
+          <PageVideos />
+          <PageNavigation />
       </Layout>
   )
 }

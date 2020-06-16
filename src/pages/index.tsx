@@ -35,7 +35,7 @@ const BlogIndex = ({ data, location }) => {
   }, [onLoad])
 
   return (
-      <Layout location={location} title={siteTitle}>
+      <Layout location={location} title={siteTitle} >
         <SEO title="All posts" />
           {
             !loading && pageLoad &&

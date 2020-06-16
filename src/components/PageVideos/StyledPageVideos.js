@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
 const fadeIn = keyframes`
     from {
@@ -19,14 +19,14 @@ const fadeOff = keyframes`
     }
 `
 
-const StyledPagePhotography = styled.section`
+const StyledPageVideos = styled.section`
     width: 100vw;
     height: 100vh;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, #E9D6FF 0%, #F1E5FF 45.79%, #F1E5FF 67.69%, #FFFFFF 127.41%);
+    background: linear-gradient(180deg, #D1DAFF 0%, #DDE3FF 28.79%, #E5EAFF 66.99%, #FFFFFF 112.82%);
     overflow-Y: hidden;
     overflow-X: scroll;
     transition: 1000ms;
@@ -63,4 +63,4 @@ const StyledPagePhotography = styled.section`
         `}
 `
 
-export default StyledPagePhotography
+export default StyledPageVideos

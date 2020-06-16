@@ -5,10 +5,10 @@ import VisibilitySensor from '../../utils/VisibilitySensor';
 import StyledBtnMenu from './StyledBtnMenu'
 import Context from '../../utils/context';
 
-export const BtnMenu = () => {
+export const BtnMenu = ({ title }) => {
     const { navIsOpen, setNavIsOpen } = useContext(Context)
     return (
-        <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={3900} delayedCall once>
+        <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={title === 'PHOTOGRAPHY' ? 3800 : 200} delayedCall once>
             {({ isVisible }) => (
                 <Spring
                     to={{
