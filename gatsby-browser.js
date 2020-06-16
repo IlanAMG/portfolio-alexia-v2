@@ -2,15 +2,6 @@
 import React from 'react'
 import GlobalContextProvider from './src/utils/GlobalContextProvider';
 
-export const wrapRootElement = ({ element }) => {
-  return (
-    <GlobalContextProvider>
-            { element }
-        </GlobalContextProvider>
-    )
-  }
-
-
 export const onLoad = () => {
       if (window) {
         window.onload = () => { 
@@ -20,3 +11,11 @@ export const onLoad = () => {
         return false;
       }
     }
+
+export const wrapRootElement = ({ element }) => {
+  return (
+    <GlobalContextProvider>
+            { element }
+        </GlobalContextProvider>
+    )
+  }
