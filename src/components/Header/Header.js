@@ -14,7 +14,7 @@ export const Header = ({ title }) => {
     return (
         <StyledHeader navIsOpen={navIsOpen} loadingFinish={loadingFinish} >
             <div className='circle transiOff' />
-            <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={title === 'PHOTOGRAPHY' && state.theFirstTimeLoadPassed === false ? 3600 : 0} delayedCall once>
+            <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={state.theFirstTimeLoadPassed === false ? 3600 : 0} delayedCall once>
                 {({ isVisible }) => (
                     <Spring
                         to={{
@@ -32,7 +32,7 @@ export const Header = ({ title }) => {
                 )}
             </VisibilitySensor>
             <BtnMenu title={title} theFirstTimeLoadPassed={state.theFirstTimeLoadPassed}  />
-            <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={title === 'PHOTOGRAPHY' && state.theFirstTimeLoadPassed === false ? 3600 : 0} delayedCall once>
+            <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={state.theFirstTimeLoadPassed === false ? 3600 : 0} delayedCall once>
                 {({ isVisible }) => (
                     <Spring
                         to={{

@@ -1,4 +1,44 @@
-import styled from 'styled-components'
+import styled, {css, keyframes } from 'styled-components'
+
+const fadeIn = keyframes`
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+`
+const deDroite = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(50px)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+`
+const deGauche = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(-50px)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+`
+
+const fadeOff = keyframes`
+    from {
+        opacity: 1;
+        transform: scale(1)
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9)
+    }
+`
 
 const StyledPageAbout = styled.section`
     width: 100vw;
@@ -6,18 +46,20 @@ const StyledPageAbout = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(180deg, #E9D6FF 0%, #F1E5FF 45.79%, #F1E5FF 67.69%, #FFFFFF 127.41%);
+    background: linear-gradient(180deg, #F6E6FB 64.58%, #FCF1FF 84.37%, #FFFFFF 100%);
     transition: 1000ms;
     overflow: hidden;
+
         .container-passion {
             margin-top: 120px;
             padding-left: 65px;
             padding-right: 65px;
             max-height: 650px;
             width: 100vw;
-            display: flex; 
+            display: flex;
             z-index: 1;
         }
+
         .container-skills {
             margin-top: 13vw;
             padding-left: 65px;
@@ -30,6 +72,7 @@ const StyledPageAbout = styled.section`
             z-index: 1;
             position: relative;
         }
+
         .container-major {
             margin-top: 6vw;
             padding-left: 65px;
@@ -58,6 +101,31 @@ const StyledPageAbout = styled.section`
             position: absolute;
             bottom: -11.5vw;
             right: 65px;
+        }
+        .profil1, .profil2, .profil3, .circle {
+            animation: ${fadeIn} 800ms linear forwards;
+            animation-delay: ${({ loadingFinish }) => loadingFinish ? '0s' : '3.8s'};
+            opacity: 0;
+        }
+        .container-passion h4 {
+            animation: ${deDroite} 300ms linear forwards;
+            animation-delay: ${({ loadingFinish }) => loadingFinish ? '0s' : '3.8s'};
+            opacity: 0;
+        }
+        .container-passion p {
+            animation: ${deDroite} 300ms linear forwards;
+            animation-delay: ${({ loadingFinish }) => loadingFinish ? '200ms' : '4s'};
+            opacity: 0;
+        }
+        .container-major h4 {
+            animation: ${deGauche} 300ms linear forwards;
+            animation-delay: ${({ loadingFinish }) => loadingFinish ? '0s' : '3.8s'};
+            opacity: 0;
+        }
+        .container-major p {
+            animation: ${deGauche} 300ms linear forwards;
+            animation-delay: ${({ loadingFinish }) => loadingFinish ? '200ms' : '4s'};
+            opacity: 0;
         }
 
         .container-passion .profil1 {
@@ -183,11 +251,27 @@ const StyledPageAbout = styled.section`
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        z-index: 1;
+        text-decoration: none;
+        color: #121212;
+        opacity: 0.8;
+        transition: 200ms;
+    }
+    .container-insta .wrapper-contact:hover {
+        transform: scale(1.1);
+        opacity: 1;
+        transition: 200ms;
     }
     .container-insta .wrapper-contact svg {
         width: 40px;
         height: 40px;
         margin-bottom: 10px;
+        transition: 400ms;
+    }
+    .container-insta .wrapper-contact svg:hover {
+        transform: scale(1.1);
+        opacity: 1;
+        transition: 400ms;
     }
     .container-insta .wrapper-contact small {
         color: #121212;
@@ -203,9 +287,9 @@ const StyledPageAbout = styled.section`
         height: 26.6vw;
         min-width: 300px;
         min-height: 300px;
-        right: -6%;
+        right: -16%;
         top: -40%;
-        z-index: 1;
+        z-index: 0;
         background: linear-gradient(180deg, #D1B4FF 0%, rgba(255, 255, 255, 0) 100%);
         transform: rotate(-60deg);
     }
@@ -222,6 +306,15 @@ const StyledPageAbout = styled.section`
         width: 400px;
         z-index: 2;
     }
+
+    ${(props) => props.navIsOpen === true && css`
+            background: #DDD8D5 !important;
+            transition: 200ms;
+                .profil1, .profil2, .profil3, .circle, .container-passion, .container-skills, .container-major, .container-insta, footer {
+                    animation: ${fadeOff} 500ms linear forwards;
+                    animation-delay: 0s !important;
+                }
+        `}
 `
 
 export default StyledPageAbout

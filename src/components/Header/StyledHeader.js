@@ -72,6 +72,7 @@ const StyledHeader = styled.header`
             font-weight: 300;
             text-transform: uppercase;
             color: #121212;
+            mix-blend-mode: exclusion;
         }
         .container-title h2 {
             margin-left: 28px;
