@@ -1,18 +1,20 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Spring } from "react-spring/renderprops";
 
 import VisibilitySensor from '../../utils/VisibilitySensor';
 import { BtnMenu } from '../BtnMenu/BtnMenu';
 import StyledHeader from './StyledHeader'
 import Context from '../../utils/context';
+import { GlobalStateContext } from '../../utils/GlobalContextProvider';
 
 export const Header = ({ title }) => {
-    const { navIsOpen, loadingFinish, setLoadingFinish } = useContext(Context)
+    const { navIsOpen, loadingFinish } = useContext(Context)
+    const state = useContext(GlobalStateContext)
 
     return (
         <StyledHeader navIsOpen={navIsOpen} loadingFinish={loadingFinish} >
             <div className='circle transiOff' />
-            <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={title === 'PHOTOGRAPHY' ? 3600 : 0} delayedCall once>
+            <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={title === 'PHOTOGRAPHY' && state.theFirstTimeLoadPassed === false ? 3600 : 0} delayedCall once>
                 {({ isVisible }) => (
                     <Spring
                         to={{
@@ -29,8 +31,8 @@ export const Header = ({ title }) => {
                     </Spring>
                 )}
             </VisibilitySensor>
-            <BtnMenu title={title} />
-            <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={title === 'PHOTOGRAPHY' ? 3600 : 0} delayedCall once>
+            <BtnMenu title={title} theFirstTimeLoadPassed={state.theFirstTimeLoadPassed}  />
+            <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={title === 'PHOTOGRAPHY' && state.theFirstTimeLoadPassed === false ? 3600 : 0} delayedCall once>
                 {({ isVisible }) => (
                     <Spring
                         to={{

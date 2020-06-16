@@ -5,43 +5,41 @@ import { graphql } from "gatsby"
 import '../style/style.css'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Loading } from '../components/Loading/Loading';
 import { PagePhotography } from '../components/PagePhotography/PagePhotography';
 import { PageNavigation } from '../components/PageNavigation/PageNavigation';
-import { onLoad } from '../../gatsby-browser';
 
 const BlogIndex = ({ data, location }) => {
-  const [loading, setLoading] = useState(false)
-  const [pageLoad, setPageLoad] = useState(false)
-  const [opacityLoading, setOpacityLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
+  // const [pageLoad, setPageLoad] = useState(false)
+  // const [opacityLoading, setOpacityLoading] = useState(false)
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
-  useEffect(() => {
-    if (onLoad) {
-      setPageLoad(true)
-        setTimeout(() => {
-          setOpacityLoading(true)
-        }, 3400)
-        document.body.style.overflow = 'hidden';
-        document.body.style.height = '100vh';
+  // useEffect(() => {
+  //   if (onLoad) {
+  //     setPageLoad(true)
+  //       setTimeout(() => {
+  //         setOpacityLoading(true)
+  //       }, 3400)
+  //       document.body.style.overflow = 'hidden';
+  //       document.body.style.height = '100vh';
   
-        setTimeout(() => {
-          setLoading(true)
-          document.body.style.overflow = 'unset';
-          document.body.style.height = 'auto';
-        }, 3900)
-    }
-  }, [onLoad])
+  //       setTimeout(() => {
+  //         setLoading(true)
+  //         document.body.style.overflow = 'unset';
+  //         document.body.style.height = 'auto';
+  //       }, 3900)
+  //   }
+  // }, [onLoad])
 
   return (
       <Layout location={location} title={siteTitle} >
         <SEO title="All posts" />
-          {
+          {/* {
             !loading && pageLoad &&
             <Loading opacityLoading={opacityLoading} />
-          }
-          <PagePhotography pageLoad={pageLoad} />
+          } */}
+          <PagePhotography />
           <PageNavigation />
       </Layout>
   )

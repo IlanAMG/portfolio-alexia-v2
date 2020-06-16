@@ -4,8 +4,8 @@ import { SvgScrollToAnimate } from '../SvgScrollToAnimate/SvgScrollToAnimate';
 import { ContainerArrowNav } from '../ContainerArrowNav/ContainerArrowNav';
 import Context from '../../utils/context';
 
-export const PagePhotography = ({ pageLoad }) => {
-    const { navIsOpen, loadingFinish, openNavTransiFinish } = useContext(Context)
+export const PagePhotography = () => {
+    const { navIsOpen, loadingFinish, openNavTransiFinish, pageLoad } = useContext(Context)
     let caroussel = useRef(null)
     let timer = useRef(null)
     const [carousselScrollLeft, setCarousselScrollLeft] = useState(0)
