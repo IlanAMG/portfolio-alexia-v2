@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const GlobalStateContext = React.createContext() 
-export const GlobalDispatchContext = React.createContext() 
+export const GlobalStateContext = React.createContext(null) 
+export const GlobalDispatchContext = React.createContext(null) 
 
 const initialState = {
     theFirstTimeLoadPassed: false
