@@ -10,8 +10,13 @@ export const wrapRootElement = ({ element }) => {
     )
   }
 
+
 export const onLoad = () => {
-      window.onload = () => { 
-        return true 
+      if (window) {
+        window.onload = () => { 
+          return true ;
+        }
+      } else {
+        return false;
       }
     }
