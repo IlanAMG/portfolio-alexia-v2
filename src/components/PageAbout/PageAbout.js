@@ -101,7 +101,7 @@ export const PageAbout = () => {
                                     : "translateY(50px)",
                             }}>
                             {(props) => (
-                                <a name='instagram' rel="noopener noreferrer" href='https://www.instagram.com/alexiamzallag/' target='_blank' style={{ ...props }} className='wrapper-contact'>
+                                <a name='instagram' rel="noopener noreferrer" href='https://www.instagram.com/alexiamzallag/' target='_blank' style={{ ...props }} className='wrapper-contact insta'>
                                     <AiOutlineInstagram />
                                     <small>alexiaamzlg@gmail.com</small>
                                 </a>

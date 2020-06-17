@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext} from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 
 import StyledPageVideos from './StyledPageVideos';
 import Context from '../../utils/context';
@@ -30,9 +30,9 @@ export const PageVideos = () => {
                 delta += 0.023
             } else if (i <= 110 * coeff && i > 60 * coeff) {
                 delta += 0.026
-            } else if (i <= 120 * coeff && i > 110 * coeff ) {
+            } else if (i <= 120 * coeff && i > 110 * coeff) {
                 delta += 0.029
-            } else if (i <= 170 * coeff && i > 120 * coeff ) {
+            } else if (i <= 170 * coeff && i > 120 * coeff) {
                 delta -= 0.029
             } else if (i <= 180 * coeff && i > 170 * coeff) {
                 delta -= 0.026
@@ -48,26 +48,26 @@ export const PageVideos = () => {
         //effet smooth à retravailler
         let delta = 1;
         for (let i = 1; i <= 240 * coeff; i++) {
-                const currentScrollDelta = caroussel.current.scrollLeft
-                setCarousselScrollLeft(currentScrollDelta)
-                if (i <= 30 * coeff && i > 0) {
-                    delta += 0.016
-                } else if (i <= 60 * coeff && i > 30 * coeff) {
-                    delta += 0.023
-                } else if (i <= 110 * coeff && i > 60 * coeff) {
-                    delta += 0.026
-                } else if (i <= 120 * coeff && i > 110 * coeff ) {
-                    delta += 0.029
-                } else if (i <= 170 * coeff && i > 120 * coeff ) {
-                    delta -= 0.029
-                } else if (i <= 180 * coeff && i > 170 * coeff) {
-                    delta -= 0.026
-                } else if (i <= 210 * coeff && i > 180 * coeff) {
-                    delta -= 0.023
-                } else if (i <= 240 * coeff && i > 210 * coeff) {
-                    delta -= 0.016
-                }
-                caroussel.current.scrollLeft = currentScrollDelta - (delta * 0.60);
+            const currentScrollDelta = caroussel.current.scrollLeft
+            setCarousselScrollLeft(currentScrollDelta)
+            if (i <= 30 * coeff && i > 0) {
+                delta += 0.016
+            } else if (i <= 60 * coeff && i > 30 * coeff) {
+                delta += 0.023
+            } else if (i <= 110 * coeff && i > 60 * coeff) {
+                delta += 0.026
+            } else if (i <= 120 * coeff && i > 110 * coeff) {
+                delta += 0.029
+            } else if (i <= 170 * coeff && i > 120 * coeff) {
+                delta -= 0.029
+            } else if (i <= 180 * coeff && i > 170 * coeff) {
+                delta -= 0.026
+            } else if (i <= 210 * coeff && i > 180 * coeff) {
+                delta -= 0.023
+            } else if (i <= 240 * coeff && i > 210 * coeff) {
+                delta -= 0.016
+            }
+            caroussel.current.scrollLeft = currentScrollDelta - (delta * 0.60);
         }
     }
 
@@ -84,8 +84,8 @@ export const PageVideos = () => {
 
     useEffect(() => {
         setLoadingFinish(true)
-      }, [])
-      
+    }, [])
+
     useEffect(() => {
         if (!navIsOpen) {
             if (caroussel.current.scrollLeft !== null) {
@@ -99,7 +99,7 @@ export const PageVideos = () => {
     }, [carousselScrollLeft])
 
     useEffect(() => {
-        window.addEventListener('wheel', onMouseWheel, {passive: false})
+        window.addEventListener('wheel', onMouseWheel, { passive: false })
     }, [navIsOpen])
 
     useEffect(() => {
@@ -108,7 +108,7 @@ export const PageVideos = () => {
         }
         return () => window.removeEventListener('wheel', onMouseWheel)
     }, [navIsOpen])
-    
+
     useEffect(() => {
         if (navIsOpen) {
             timer.current = setTimeout(() => {
@@ -125,54 +125,54 @@ export const PageVideos = () => {
         <StyledPageVideos ref={caroussel} navIsOpen={navIsOpen} loadingFinish={loadingFinish} >
             {imgDisapear === false &&
                 <div className='caroussel transiOff'>
-                {stateVideos.map((video, id) => {
-                    return (
-                        <div className='wrapper-videos' key={id}>
-                            <img alt='test' src={video} />
-                            <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2"/>
-                            <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2"/>
-                            </svg>
-                        </div>
-                    )
-                })}   
-                {stateVideos.map((video, id) => {
-                    return (
-                        <div className='wrapper-videos' key={id}>
-                            <img alt='test' src={video} />
-                            <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2"/>
-                            <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2"/>
-                            </svg>
-                        </div>
-                    )
-                })}   
-                {stateVideos.map((video, id) => {
-                    return (
-                        <div className='wrapper-videos' key={id}>
-                            <img alt='test' src={video} />
-                            <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2"/>
-                            <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2"/>
-                            </svg>
-                        </div>
-                    )
-                })}   
-                    {/* <img alt='test' src='https://i.imgur.com/2kYt363.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ui71sJB.jpg' />
-                    <img alt='test' src='https://i.imgur.com/KQT08WM.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ypeTJvC.jpg' />
-                    <img alt='test' src='https://i.imgur.com/2kYt363.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ui71sJB.jpg' />
-                    <img alt='test' src='https://i.imgur.com/KQT08WM.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ypeTJvC.jpg' />
-                    <img alt='test' src='https://i.imgur.com/2kYt363.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ui71sJB.jpg' />
-                    <img alt='test' src='https://i.imgur.com/KQT08WM.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ypeTJvC.jpg' /> */}
+                    {stateVideos.map((video, id) => {
+                        return (
+                            <div className='wrapper-videos' key={id}>
+                                <img alt='test' src={video} />
+                                <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2" />
+                                    <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2" />
+                                </svg>
+                                <div className='wrapper-hover'>
+                                    <small>Title</small>
+                                    <small>Title</small>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    {stateVideos.map((video, id) => {
+                        return (
+                            <div className='wrapper-videos' key={id}>
+                                <img alt='test' src={video} />
+                                <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2" />
+                                    <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2" />
+                                </svg>
+                                <div className='wrapper-hover'>
+                                    <small>Title</small>
+                                    <small>Title</small>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    {stateVideos.map((video, id) => {
+                        return (
+                            <div className='wrapper-videos' key={id}>
+                                <img alt='test' src={video} />
+                                <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2" />
+                                    <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2" />
+                                </svg>
+                                <div className='wrapper-hover'>
+                                    <small>Title</small>
+                                    <small>Title</small>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             }
-            <ContainerArrowNav navIsOpen={navIsOpen} loadingFinish={loadingFinish} handleClickNext={handleClickNext} handleClickPrev={handleClickPrev}/>
+            <ContainerArrowNav navIsOpen={navIsOpen} loadingFinish={loadingFinish} handleClickNext={handleClickNext} handleClickPrev={handleClickPrev} />
             <SvgScrollToAnimate navIsOpen={navIsOpen} loadingFinish={loadingFinish} />
         </StyledPageVideos>
     )

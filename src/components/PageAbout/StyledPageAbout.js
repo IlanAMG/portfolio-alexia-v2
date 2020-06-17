@@ -56,7 +56,7 @@ const StyledPageAbout = styled.section`
             padding-right: 65px;
             width: 100vw;
             display: flex;
-            z-index: 1;
+            z-index: 3;
         }
 
         .container-skills {
@@ -68,7 +68,7 @@ const StyledPageAbout = styled.section`
             width: 100vw;
             display: flex; 
             justify-content: flex-end;
-            z-index: 1;
+            z-index: 3;
             position: relative;
         }
 
@@ -253,7 +253,7 @@ const StyledPageAbout = styled.section`
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        z-index: 1;
+        z-index: 0;
         text-decoration: none;
         color: #121212;
         opacity: 0.8;
@@ -269,6 +269,10 @@ const StyledPageAbout = styled.section`
         height: 40px;
         margin-bottom: 10px;
         transition: 400ms;
+    }
+    .container-insta .wrapper-contact.insta svg {
+        width: 48px;
+        height: 48px;
     }
     .container-insta .wrapper-contact svg:hover {
         transform: scale(1.1);
@@ -291,7 +295,7 @@ const StyledPageAbout = styled.section`
         min-height: 300px;
         right: -16%;
         top: -40%;
-        z-index: 0;
+        z-index: -1;
         background: linear-gradient(180deg, #D1B4FF 0%, rgba(255, 255, 255, 0) 100%);
         transform: rotate(-60deg);
     }

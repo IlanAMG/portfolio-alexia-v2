@@ -68,6 +68,25 @@ const StyledPageVideos = styled.section`
             transform: scale(1.15);
             transition: 500ms;
         }
+        .wrapper-hover {
+            position: absolute;
+            padding: 0 10px;
+            height: 30px; 
+            width: 100%;
+            right: -50%;
+            transform: rotate(90deg);
+            z-index: 50;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            transition: 400ms;
+            opacity: 0;
+        }
+        .wrapper-videos:hover .wrapper-hover {
+            right: -53.1%;
+            transition: 400ms;
+            opacity: 1;
+        }
 
         ${(props) => props.navIsOpen === true && css`
             background: #DDD8D5 !important;

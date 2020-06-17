@@ -41,12 +41,46 @@ const StyledPagePhotography = styled.section`
         }
         .caroussel img {
             height: 100%;
-            margin: 0 45px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
-            animation: ${fadeIn} 800ms linear forwards;
-            animation-delay: ${({ loadingFinish }) => loadingFinish ? '0s' : '3.9s'};
-            opacity: 0;
             cursor: pointer;
+        }
+
+        .wrapper-photos {
+            height: 100%;
+            margin: 0 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            opacity: 0;
+            animation: ${fadeIn} 800ms linear forwards;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+            animation-delay: ${({ loadingFinish }) => loadingFinish ? '0s' : '3.9s'};
+            transition: 500ms;
+        }
+
+        .wrapper-photos:hover {
+            transition: 500ms;
+            box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.15);
+        }
+        .wrapper-hover {
+            position: absolute;
+            padding: 0 10px;
+            height: 30px; 
+            width: 100%;
+            right: -50%;
+            transform: rotate(90deg);
+            z-index: 50;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            transition: 400ms;
+            opacity: 0;
+        }
+        .wrapper-photos:hover .wrapper-hover {
+            right: -53.1%;
+            transition: 400ms;
+            opacity: 1;
         }
 
         ${(props) => props.navIsOpen === true && css`

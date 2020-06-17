@@ -10,6 +10,12 @@ export const PagePhotography = () => {
     let timer = useRef(null)
     const [carousselScrollLeft, setCarousselScrollLeft] = useState(0)
     const [imgDisapear, setImgDisapear] = useState(false)
+    const [statePhotos, setPhotos] = useState([
+        'https://i.imgur.com/2kYt363.jpg',
+        'https://i.imgur.com/ui71sJB.jpg',
+        'https://i.imgur.com/KQT08WM.jpg',
+        'https://i.imgur.com/ypeTJvC.jpg',
+    ])
 
     const handleClickNext = (coeff) => {
         //effet smooth à retravailler
@@ -112,18 +118,39 @@ export const PagePhotography = () => {
         <StyledPagePhotography ref={caroussel} navIsOpen={navIsOpen} loadingFinish={loadingFinish} >
             {imgDisapear === false &&
                 <div className='caroussel transiOff'>
-                    <img alt='test' src='https://i.imgur.com/2kYt363.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ui71sJB.jpg' />
-                    <img alt='test' src='https://i.imgur.com/KQT08WM.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ypeTJvC.jpg' />
-                    <img alt='test' src='https://i.imgur.com/2kYt363.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ui71sJB.jpg' />
-                    <img alt='test' src='https://i.imgur.com/KQT08WM.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ypeTJvC.jpg' />
-                    <img alt='test' src='https://i.imgur.com/2kYt363.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ui71sJB.jpg' />
-                    <img alt='test' src='https://i.imgur.com/KQT08WM.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ypeTJvC.jpg' />
+                {statePhotos.map((photo, id) => {
+                    return (
+                        <div className='wrapper-photos' key={id}>
+                            <img alt='test' src={photo} />
+                            <div className='wrapper-hover'>
+                                <small>Title</small>
+                                <small>Title</small>
+                            </div>
+                        </div>
+                    )
+                })}   
+                {statePhotos.map((photo, id) => {
+                    return (
+                        <div className='wrapper-photos' key={id}>
+                            <img alt='test' src={photo} />
+                            <div className='wrapper-hover'>
+                                <small>Title</small>
+                                <small>Title</small>
+                            </div>
+                        </div>
+                    )
+                })}   
+                {statePhotos.map((photo, id) => {
+                    return (
+                        <div className='wrapper-photos' key={id}>
+                            <img alt='test' src={photo} />
+                            <div className='wrapper-hover'>
+                                <small>Title</small>
+                                <small>Title</small>
+                            </div>
+                        </div>
+                    )
+                })}   
                 </div>
             }
             <ContainerArrowNav navIsOpen={navIsOpen} loadingFinish={loadingFinish} handleClickNext={handleClickNext} handleClickPrev={handleClickPrev}/>

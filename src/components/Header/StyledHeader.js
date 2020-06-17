@@ -17,11 +17,31 @@ const fadeOff = keyframes`
     }
 `
 
+const fadeInScroll = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`
+const fadeOffScroll = keyframes`
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+`
+
 const StyledHeader = styled.header`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 4;
     width: 100%;
     height: 80px;
     display: flex;
@@ -98,7 +118,16 @@ const StyledHeader = styled.header`
                 opacity: 0 !important;
                 transition: 500ms;
             }
-            
+        `}
+
+        ${(props) => props.disapearHeader === true && css`
+            animation: ${fadeOffScroll} 0.3s linear forwards;
+            animation-delay: 0s !important;
+        `}
+
+        ${(props) => props.disapearHeader === false && css`
+            animation: ${fadeInScroll} 0.3s linear forwards;
+            animation-delay: 0s !important;
         `}
 `
 
