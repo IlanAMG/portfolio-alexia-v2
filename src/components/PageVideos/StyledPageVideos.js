@@ -41,10 +41,6 @@ const StyledPageVideos = styled.section`
         }
         .caroussel img {
             height: 100%;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
-            animation: ${fadeIn} 800ms linear forwards;
-            animation-delay: ${({ loadingFinish }) => loadingFinish ? '0s' : '3.9s'};
-            opacity: 0;
             cursor: pointer;
         }
 
@@ -56,6 +52,11 @@ const StyledPageVideos = styled.section`
             justify-content: center;
             position: relative;
             cursor: pointer;
+            opacity: 0;
+            animation: ${fadeIn} 800ms linear forwards;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+            animation-delay: ${({ loadingFinish }) => loadingFinish ? '0s' : '3.9s'};
+            transition: 500ms;
         }
         .wrapper-videos svg {
             z-index: 1;
@@ -81,6 +82,10 @@ const StyledPageVideos = styled.section`
             justify-content: space-between;
             transition: 400ms;
             opacity: 0;
+        }
+        .wrapper-videos:hover {
+            transition: 500ms;
+            box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.35);
         }
         .wrapper-videos:hover .wrapper-hover {
             right: -53.1%;

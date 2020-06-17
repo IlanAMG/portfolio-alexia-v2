@@ -1,21 +1,17 @@
 import React, { useRef, useEffect, useState, useContext } from 'react'
+
 import StyledPagePhotography from './StyledPagePhotography';
 import { SvgScrollToAnimate } from '../SvgScrollToAnimate/SvgScrollToAnimate';
 import { ContainerArrowNav } from '../ContainerArrowNav/ContainerArrowNav';
+import { PhotoItem } from '../PhotoItem/PhotoItem';
 import Context from '../../utils/context';
 
-export const PagePhotography = () => {
+export const PagePhotography = ({ projets }) => {
     const { navIsOpen, loadingFinish, openNavTransiFinish, pageLoad } = useContext(Context)
     let caroussel = useRef(null)
     let timer = useRef(null)
     const [carousselScrollLeft, setCarousselScrollLeft] = useState(0)
     const [imgDisapear, setImgDisapear] = useState(false)
-    const [statePhotos, setPhotos] = useState([
-        'https://i.imgur.com/2kYt363.jpg',
-        'https://i.imgur.com/ui71sJB.jpg',
-        'https://i.imgur.com/KQT08WM.jpg',
-        'https://i.imgur.com/ypeTJvC.jpg',
-    ])
 
     const handleClickNext = (coeff) => {
         //effet smooth à retravailler
@@ -118,37 +114,19 @@ export const PagePhotography = () => {
         <StyledPagePhotography ref={caroussel} navIsOpen={navIsOpen} loadingFinish={loadingFinish} >
             {imgDisapear === false &&
                 <div className='caroussel transiOff'>
-                {statePhotos.map((photo, id) => {
+                {projets.edges.map(({ node:projet }) => {
                     return (
-                        <div className='wrapper-photos' key={id}>
-                            <img alt='test' src={photo} />
-                            <div className='wrapper-hover'>
-                                <small>Title</small>
-                                <small>Title</small>
-                            </div>
-                        </div>
+                        <PhotoItem slug={projet.slugPhoto} alt={projet.principale.alt} src={projet.principale.fluid.src} />
                     )
                 })}   
-                {statePhotos.map((photo, id) => {
+                {projets.edges.map(({ node:projet }) => {
                     return (
-                        <div className='wrapper-photos' key={id}>
-                            <img alt='test' src={photo} />
-                            <div className='wrapper-hover'>
-                                <small>Title</small>
-                                <small>Title</small>
-                            </div>
-                        </div>
+                        <PhotoItem slug={projet.slugPhoto} alt={projet.principale.alt} src={projet.principale.fluid.src} />
                     )
                 })}   
-                {statePhotos.map((photo, id) => {
+                {projets.edges.map(({ node:projet }) => {
                     return (
-                        <div className='wrapper-photos' key={id}>
-                            <img alt='test' src={photo} />
-                            <div className='wrapper-hover'>
-                                <small>Title</small>
-                                <small>Title</small>
-                            </div>
-                        </div>
+                        <PhotoItem slug={projet.slugPhoto} alt={projet.principale.alt} src={projet.principale.fluid.src} />
                     )
                 })}   
                 </div>

@@ -1,15 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
-    },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
-    social: {
-      twitter: `kylemathews`,
-    },
+    title: `Alexia Amzallag`,
+    description: `Portfolio Alexia Amzallag | Make-up Artist in Paris.`,
+    siteUrl: `https://alexiamzallag.com`,
   },
   plugins: [
     {
@@ -24,6 +17,12 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: 'f176fc3647dd2ff9cdcb4fbbc1039c', //clé read only
       },
     },
     {

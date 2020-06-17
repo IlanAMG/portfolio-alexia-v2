@@ -259,7 +259,7 @@ const StyledPageAbout = styled.section`
         opacity: 0.8;
         transition: 200ms;
     }
-    .container-insta .wrapper-contact:hover {
+    .container-insta .wrapper-contact:hover svg {
         transform: scale(1.1);
         opacity: 1;
         transition: 200ms;
