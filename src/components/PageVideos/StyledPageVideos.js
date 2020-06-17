@@ -41,12 +41,32 @@ const StyledPageVideos = styled.section`
         }
         .caroussel img {
             height: 100%;
-            margin: 0 45px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
             animation: ${fadeIn} 800ms linear forwards;
             animation-delay: ${({ loadingFinish }) => loadingFinish ? '0s' : '3.9s'};
             opacity: 0;
             cursor: pointer;
+        }
+
+        .wrapper-videos {
+            height: 100%;
+            margin: 0 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+        }
+        .wrapper-videos svg {
+            z-index: 1;
+            position: absolute;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: 500ms;
+        }
+        .wrapper-videos:hover svg {
+            transform: scale(1.15);
+            transition: 500ms;
         }
 
         ${(props) => props.navIsOpen === true && css`

@@ -54,7 +54,6 @@ const StyledPageAbout = styled.section`
             margin-top: 120px;
             padding-left: 65px;
             padding-right: 65px;
-            max-height: 650px;
             width: 100vw;
             display: flex;
             z-index: 1;
@@ -74,7 +73,7 @@ const StyledPageAbout = styled.section`
         }
 
         .container-major {
-            margin-top: 6vw;
+            margin-top: 12vw;
             padding-left: 65px;
             padding-right: 65px;
             max-height: 650px;
@@ -89,6 +88,7 @@ const StyledPageAbout = styled.section`
         .container-major .wrapper-txt {
             text-align: right;
             width: calc(62.30% - 65px);
+            transform: translateY(-6vw);
         }
         .container-skills .wrapper-txt {
             padding-top: 50px;
@@ -108,28 +108,29 @@ const StyledPageAbout = styled.section`
             opacity: 0;
         }
         .container-passion h4 {
-            animation: ${deDroite} 300ms linear forwards;
+            animation: ${deDroite} 1000ms linear forwards;
             animation-delay: ${({ loadingFinish }) => loadingFinish ? '0s' : '3.8s'};
             opacity: 0;
         }
         .container-passion p {
-            animation: ${deDroite} 300ms linear forwards;
+            animation: ${deDroite} 1000ms linear forwards;
             animation-delay: ${({ loadingFinish }) => loadingFinish ? '200ms' : '4s'};
             opacity: 0;
         }
         .container-major h4 {
-            animation: ${deGauche} 300ms linear forwards;
+            animation: ${deGauche} 1000ms linear forwards;
             animation-delay: ${({ loadingFinish }) => loadingFinish ? '0s' : '3.8s'};
             opacity: 0;
         }
         .container-major p {
-            animation: ${deGauche} 300ms linear forwards;
+            animation: ${deGauche} 1000ms linear forwards;
             animation-delay: ${({ loadingFinish }) => loadingFinish ? '200ms' : '4s'};
             opacity: 0;
         }
 
         .container-passion .profil1 {
             width: 37.70%;
+            height: 37.70%;
             z-index: 1;
         }
         .container-skills .profil3 {
@@ -164,6 +165,7 @@ const StyledPageAbout = styled.section`
             top: -20%;
             background: linear-gradient(180deg, #D1B4FF 0%, rgba(255, 255, 255, 0) 100%);
             transform: rotate(-150deg);
+            transform: translateY(-5vw);
         }
         .container-skills .circle {
             left: -15%;

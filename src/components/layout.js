@@ -9,7 +9,6 @@ import { GlobalStateContext, GlobalDispatchContext } from '../utils/GlobalContex
 const Layout = ({ location, title, children }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
-
   const [loading, setLoading] = useState(false)
   const [pageLoad, setPageLoad] = useState(false)
   const [opacityLoading, setOpacityLoading] = useState(false)

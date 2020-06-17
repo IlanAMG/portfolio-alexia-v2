@@ -11,6 +11,12 @@ export const PageVideos = () => {
     let timer = useRef(null)
     const [carousselScrollLeft, setCarousselScrollLeft] = useState(0)
     const [imgDisapear, setImgDisapear] = useState(false)
+    const [stateVideos, setVideos] = useState([
+        'https://i.imgur.com/2kYt363.jpg',
+        'https://i.imgur.com/ui71sJB.jpg',
+        'https://i.imgur.com/KQT08WM.jpg',
+        'https://i.imgur.com/ypeTJvC.jpg',
+    ])
 
     const handleClickNext = (coeff) => {
         //effet smooth à retravailler
@@ -115,10 +121,44 @@ export const PageVideos = () => {
     }, [navIsOpen])
 
     return (
+        !openNavTransiFinish &&
         <StyledPageVideos ref={caroussel} navIsOpen={navIsOpen} loadingFinish={loadingFinish} >
             {imgDisapear === false &&
                 <div className='caroussel transiOff'>
-                    <img alt='test' src='https://i.imgur.com/2kYt363.jpg' />
+                {stateVideos.map((video, id) => {
+                    return (
+                        <div className='wrapper-videos' key={id}>
+                            <img alt='test' src={video} />
+                            <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2"/>
+                            <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    )
+                })}   
+                {stateVideos.map((video, id) => {
+                    return (
+                        <div className='wrapper-videos' key={id}>
+                            <img alt='test' src={video} />
+                            <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2"/>
+                            <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    )
+                })}   
+                {stateVideos.map((video, id) => {
+                    return (
+                        <div className='wrapper-videos' key={id}>
+                            <img alt='test' src={video} />
+                            <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2"/>
+                            <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    )
+                })}   
+                    {/* <img alt='test' src='https://i.imgur.com/2kYt363.jpg' />
                     <img alt='test' src='https://i.imgur.com/ui71sJB.jpg' />
                     <img alt='test' src='https://i.imgur.com/KQT08WM.jpg' />
                     <img alt='test' src='https://i.imgur.com/ypeTJvC.jpg' />
@@ -129,7 +169,7 @@ export const PageVideos = () => {
                     <img alt='test' src='https://i.imgur.com/2kYt363.jpg' />
                     <img alt='test' src='https://i.imgur.com/ui71sJB.jpg' />
                     <img alt='test' src='https://i.imgur.com/KQT08WM.jpg' />
-                    <img alt='test' src='https://i.imgur.com/ypeTJvC.jpg' />
+                    <img alt='test' src='https://i.imgur.com/ypeTJvC.jpg' /> */}
                 </div>
             }
             <ContainerArrowNav navIsOpen={navIsOpen} loadingFinish={loadingFinish} handleClickNext={handleClickNext} handleClickPrev={handleClickPrev}/>
