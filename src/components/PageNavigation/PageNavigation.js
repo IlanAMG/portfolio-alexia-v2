@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import Context from '../../utils/context';
 
 export const PageNavigation = () => {
-    const { openNavTransiFinish, setNavIsOpen, navIsOpen } = useContext(Context)
+    const { openNavTransiFinish, setNavIsOpen, navIsOpen, location } = useContext(Context)
     const [transiTo, setTransiTo] = useState(null)
 
     const handleClick = (e) => {
@@ -13,12 +13,15 @@ export const PageNavigation = () => {
         const direction = e.target.innerText
         const path = e.currentTarget.getAttribute('value')
         setTransiTo(direction)
-        window.setTimeout(() => {
-            navigate(path)
-        }, 600)
-        window.setTimeout(() => {
-            setNavIsOpen(false)
-        }, 800)
+        if (location.pathname === path) {
+            window.setTimeout(() => {
+                setNavIsOpen(false)
+            }, 600)
+        } else {
+            window.setTimeout(() => {
+                navigate(path)
+            }, 600)
+        }
     }
 
     useEffect(() => {

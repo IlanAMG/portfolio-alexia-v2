@@ -72,7 +72,7 @@ const Layout = ({ location, title, children }) => {
 }, [navIsOpen])
 
   return (
-    <Context.Provider value={{pageLoad, setLoadingFinish, navIsOpen, setNavIsOpen, loadingFinish, openNavTransiFinish }} >
+    <Context.Provider value={{location, pageLoad, setLoadingFinish, navIsOpen, setNavIsOpen, loadingFinish, openNavTransiFinish }} >
       <Header title={title} location={location} rootPath={rootPath} />
       {
         !loading && pageLoad && state.theFirstTimeLoadPassed === false &&
