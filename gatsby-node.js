@@ -12,10 +12,19 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
-            slugPhoto
+            titreProjet
+            creditLigne1
+            creditLigne2
+            creditLigne3
+            creditLigne4
+            creditLigne5
+            creditLigne6
+            slugProjet
             galeriePhoto {
               alt
               fluid {
+                width
+                height
                 src
               }
             }
@@ -38,10 +47,16 @@ exports.createPages = async ({ graphql, actions }) => {
     const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
-      path: post.node.slugPhoto,
+      path: post.node.slugProjet,
       component: blogPost,
       context: {
-        slugPhoto: post.node.slugPhoto,
+        slugProjet: post.node.slugProjet,
+        creditLigne1: post.node.creditLigne1,
+        creditLigne2: post.node.creditLigne2,
+        creditLigne3: post.node.creditLigne3,
+        creditLigne4: post.node.creditLigne4,
+        creditLigne5: post.node.creditLigne5,
+        creditLigne6: post.node.creditLigne6,
         previous,
         next,
       },

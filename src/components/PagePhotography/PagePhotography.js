@@ -116,17 +116,17 @@ export const PagePhotography = ({ projets }) => {
                 <div className='caroussel transiOff'>
                 {projets.edges.map(({ node:projet }) => {
                     return (
-                        <PhotoItem slug={projet.slugPhoto} alt={projet.principale.alt} src={projet.principale.fluid.src} />
+                        <PhotoItem title1={projet.titreProjet} title2={projet.creditLigne1} slug={projet.slugProjet} alt={projet.principale.alt} src={projet.principale.fluid.src} />
                     )
                 })}   
                 {projets.edges.map(({ node:projet }) => {
                     return (
-                        <PhotoItem slug={projet.slugPhoto} alt={projet.principale.alt} src={projet.principale.fluid.src} />
+                        <PhotoItem title1={projet.titreProjet} title2={projet.creditLigne1} slug={projet.slugProjet} alt={projet.principale.alt} src={projet.principale.fluid.src} />
                     )
                 })}   
                 {projets.edges.map(({ node:projet }) => {
                     return (
-                        <PhotoItem slug={projet.slugPhoto} alt={projet.principale.alt} src={projet.principale.fluid.src} />
+                        <PhotoItem title1={projet.titreProjet} title2={projet.creditLigne1} slug={projet.slugProjet} alt={projet.principale.alt} src={projet.principale.fluid.src} />
                     )
                 })}   
                 </div>

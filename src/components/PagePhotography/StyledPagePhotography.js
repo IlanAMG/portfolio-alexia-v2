@@ -62,18 +62,30 @@ const StyledPagePhotography = styled.section`
             z-index: 2;
         }
 
+        .wrapper-photos .wrapper-hover {
+            opacity: 0;
+            width: 62.5vh;
+            padding: 0 5px;
+            bottom: 0;
+            right: 15px;
+            position: absolute;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            transform: rotate(90deg);
+            transform-origin: bottom right;
+            transition: 500ms;
+            z-index: -1;
+        }
+
+        .wrapper-photos:hover .wrapper-hover {
+            transition: 500ms;
+            right: -5px;
+            opacity: 1;
+        }
         .wrapper-photos:hover {
             transition: 500ms;
             box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.35);
-        }
-
-        .wrapper-photos:hover .wrapper-hover small {
-            right: -35px;
-        }
-        
-        .wrapper-photos:hover .wrapper-hover small {
-            transition: 400ms;
-            opacity: 1;
         }
 
         .wrapper-photos a {

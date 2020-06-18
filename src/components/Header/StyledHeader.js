@@ -61,7 +61,7 @@ const StyledHeader = styled.header`
 
         .circle {
             border-radius: 50%;
-            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+            background: ${({colorCircle}) => colorCircle};
             transform: rotate(17.31deg);
             position: absolute;
             width: 26.6vw;

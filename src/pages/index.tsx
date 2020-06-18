@@ -33,7 +33,9 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          slugPhoto
+          slugProjet
+          titreProjet
+          creditLigne1
           principale {
             alt
             fluid(maxHeight: 800) {

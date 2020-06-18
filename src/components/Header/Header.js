@@ -8,12 +8,13 @@ import Context from '../../utils/context';
 import { GlobalStateContext } from '../../utils/GlobalContextProvider';
 import { useScrollDirection } from '../../utils/useScrollDirection';
 
-export const Header = ({ title }) => {
+export const Header = ({ title, location }) => {
     const { navIsOpen, loadingFinish } = useContext(Context)
     const state = useContext(GlobalStateContext)
     let direction = useRef('')
     const directionScroll = useScrollDirection()
     const [disapearHeader, setDisapearHeader] = useState(false)
+    const [colorCircle, setColorCircle] = useState('linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);')
 
     const getYOffset = () => {
         if (window.pageYOffset > 100 && direction.current === 'down') {
@@ -24,8 +25,17 @@ export const Header = ({ title }) => {
     }
 
     useEffect(() => {
+        console.log(location.pathname)
+        if (location.pathname !== '/' && location.pathname !== '/about' && location.pathname !== '/videos') {
+            setColorCircle('linear-gradient(180deg, #D1B4FF 0%, rgba(255, 255, 255, 0) 100%);')
+        } else {
+            setColorCircle('linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);')
+        }
+      }, [location.pathname])
+
+    useEffect(() => {
         direction.current = directionScroll
-      }, [directionScroll])
+    }, [directionScroll])
 
     useEffect(() => {
         if (navIsOpen === false) {
@@ -40,8 +50,8 @@ export const Header = ({ title }) => {
     }, [navIsOpen])
 
     return (
-        <StyledHeader navIsOpen={navIsOpen} loadingFinish={loadingFinish} disapearHeader={disapearHeader} >
-            <div className='circle transiOff' />
+        <StyledHeader colorCircle={colorCircle} navIsOpen={navIsOpen} loadingFinish={loadingFinish} disapearHeader={disapearHeader} >
+            <div className='circle transiOff'/>
             <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={state.theFirstTimeLoadPassed === false ? 3600 : 0} delayedCall once>
                 {({ isVisible }) => (
                     <Spring
