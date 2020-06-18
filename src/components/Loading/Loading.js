@@ -28,7 +28,7 @@ export const Loading = ({ opacityLoading }) => {
                         {(props) => (
                             <div style={{ ...props }} className='container-bienvenue'>
                                 <h4>BIENVENUE</h4>
-                                <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</h5>
+                                <h5>L'art doit découvrir et révéler la beauté que le préjugé et la caricature ont dissimulée.</h5>
                             </div>
                         )}
                     </Spring>

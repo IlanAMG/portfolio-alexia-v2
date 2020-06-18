@@ -29,7 +29,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allDatoCmsPhoto {
+    allDatoCmsPhoto(sort: {fields: galeriePhoto___createdAt}) {
       edges {
         node {
           id
