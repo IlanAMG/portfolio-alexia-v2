@@ -130,7 +130,7 @@ export const PageVideos = ({ projets }) => {
                     {projets.edges.map(({node:video}) => {
                         return (
                             <div className='wrapper-videos' key={video.id} onClick={() => handleOpenVideo(video.lienVideo.providerUid)}>
-                                <img alt='test' src={video.principale !== null ? video.principale.uploadId.fluid.src : video.lienVideo.thumbnailUrl} />
+                                <img alt='test' src={video.principale !== null ? video.principale.fluid.src : video.lienVideo.thumbnailUrl} />
                                 <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2" />
                                     <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2" />
@@ -145,7 +145,7 @@ export const PageVideos = ({ projets }) => {
                     {projets.edges.map(({node:video}) => {
                         return (
                             <div className='wrapper-videos' key={video.id} onClick={() => handleOpenVideo(video.lienVideo.providerUid)}>
-                                <img alt='test' src={video.principale !== null ? video.principale.uploadId.fluid.src : video.lienVideo.thumbnailUrl} />
+                                <img alt='test' src={video.principale !== null ? video.principale.fluid.src : video.lienVideo.thumbnailUrl} />
                                 <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2" />
                                     <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2" />
@@ -160,7 +160,7 @@ export const PageVideos = ({ projets }) => {
                     {projets.edges.map(({node:video}) => {
                         return (
                             <div className='wrapper-videos' key={video.id} onClick={() => handleOpenVideo(video.lienVideo.providerUid)}>
-                                <img alt='test' src={video.principale !== null ? video.principale.uploadId.fluid.src : video.lienVideo.thumbnailUrl} />
+                                <img alt='test' src={video.principale !== null ? video.principale.fluid.src : video.lienVideo.thumbnailUrl} />
                                 <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2" />
                                     <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2" />

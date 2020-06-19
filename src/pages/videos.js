@@ -39,10 +39,8 @@ export const pageQuery = graphql`
             providerUid
           }
           principale {
-            uploadId {
-              fluid {
-                src
-              }
+            fluid {
+              src
             }
           }
         }
