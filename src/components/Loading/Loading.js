@@ -1,5 +1,6 @@
 import React from 'react'
 import { Spring } from "react-spring/renderprops";
+import { useStaticQuery, graphql } from "gatsby"
 import TrackVisibility from 'react-on-screen';
 
 import StyledLoading from './StyledLoading'
@@ -9,10 +10,52 @@ import VisibilitySensor from '../../utils/VisibilitySensor';
 
 
 export const Loading = ({ opacityLoading }) => {
-    const url1 = 'https://i.imgur.com/2kYt363.jpg'
-    const url2 = 'https://i.imgur.com/ui71sJB.jpg'
-    const url3 = 'https://i.imgur.com/KQT08WM.jpg'
-    const url4 = 'https://i.imgur.com/ypeTJvC.jpg'
+    
+    const { datoCmsLoadingpage } = useStaticQuery(
+        graphql`
+        query {
+            datoCmsLoadingpage {
+                citation
+                photo1 {
+                  uploadId {
+                    fluid(maxHeight: 900) {
+                        src
+                      ...GatsbyDatoCmsFluid
+                    }
+                  }
+                }
+                photo2 {
+                  uploadId {
+                    fluid(maxHeight: 900) {
+                        src
+                      ...GatsbyDatoCmsFluid
+                    }
+                  }
+                }
+                photo3 {
+                  uploadId {
+                    fluid(maxHeight: 900) {
+                        src
+                      ...GatsbyDatoCmsFluid
+                    }
+                  }
+                }
+                photo4 {
+                  uploadId {
+                    fluid(maxHeight: 900) {
+                        src
+                      ...GatsbyDatoCmsFluid
+                    }
+                  }
+                }
+              }
+            }
+        `)
+        
+    const url1 = datoCmsLoadingpage.photo1.uploadId.fluid
+    const url2 = datoCmsLoadingpage.photo2.uploadId.fluid
+    const url3 = datoCmsLoadingpage.photo3.uploadId.fluid
+    const url4 = datoCmsLoadingpage.photo4.uploadId.fluid
 
     return (
         <StyledLoading finish={opacityLoading} >
@@ -28,7 +71,7 @@ export const Loading = ({ opacityLoading }) => {
                         {(props) => (
                             <div style={{ ...props }} className='container-bienvenue'>
                                 <h4>BIENVENUE</h4>
-                                <h5>L'art doit découvrir et révéler la beauté que le préjugé et la caricature ont dissimulée.</h5>
+                                <h5>{datoCmsLoadingpage.citation}</h5>
                             </div>
                         )}
                     </Spring>

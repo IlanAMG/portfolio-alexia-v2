@@ -30,6 +30,7 @@ const StyledPageVideos = styled.section`
     overflow-Y: hidden;
     overflow-X: scroll;
     transition: 1000ms;
+    z-index: 0;
 
         .caroussel {
             height: 62.5%;
@@ -69,28 +70,30 @@ const StyledPageVideos = styled.section`
             transform: scale(1.15);
             transition: 500ms;
         }
-        .wrapper-hover {
-            position: absolute;
-            padding: 0 10px;
-            height: 30px; 
-            width: 100%;
-            right: -50%;
-            transform: rotate(90deg);
-            z-index: 50;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            transition: 400ms;
+        .wrapper-videos .wrapper-hover {
             opacity: 0;
+            width: 62.5vh;
+            padding: 0 5px;
+            bottom: 0;
+            right: 15px;
+            position: absolute;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            transform: rotate(90deg);
+            transform-origin: bottom right;
+            transition: 500ms;
+            z-index: -1;
+        }
+
+        .wrapper-videos:hover .wrapper-hover {
+            transition: 500ms;
+            right: -5px;
+            opacity: 1;
         }
         .wrapper-videos:hover {
             transition: 500ms;
             box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.35);
-        }
-        .wrapper-videos:hover .wrapper-hover {
-            right: -53.1%;
-            transition: 400ms;
-            opacity: 1;
         }
 
         ${(props) => props.navIsOpen === true && css`

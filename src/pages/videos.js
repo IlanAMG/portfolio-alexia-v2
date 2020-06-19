@@ -8,11 +8,12 @@ import { PageVideos } from '../components/PageVideos/PageVideos';
 
 const Videos = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
+  const projets = data.allDatoCmsVideo
 
   return (
       <Layout location={location} title={siteTitle}>
         <SEO title="videos" />
-          <PageVideos />
+          <PageVideos projets={projets} />
           <PageNavigation />
       </Layout>
   )
@@ -25,6 +26,26 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    allDatoCmsVideo {
+      edges {
+        node {
+          id
+          creditLigne1
+          titreProjet
+          lienVideo {
+            thumbnailUrl
+            providerUid
+          }
+          principale {
+            uploadId {
+              fluid {
+                src
+              }
+            }
+          }
+        }
       }
     }
   }

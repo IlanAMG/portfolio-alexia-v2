@@ -4,19 +4,15 @@ import StyledPageVideos from './StyledPageVideos';
 import Context from '../../utils/context';
 import { ContainerArrowNav } from '../ContainerArrowNav/ContainerArrowNav';
 import { SvgScrollToAnimate } from '../SvgScrollToAnimate/SvgScrollToAnimate';
+import { LecteurVideo } from '../LecteurVideo/LecteurVideo';
 
-export const PageVideos = () => {
+export const PageVideos = ({ projets }) => {
     const { navIsOpen, loadingFinish, openNavTransiFinish, setLoadingFinish } = useContext(Context)
     let caroussel = useRef(null)
     let timer = useRef(null)
     const [carousselScrollLeft, setCarousselScrollLeft] = useState(0)
     const [imgDisapear, setImgDisapear] = useState(false)
-    const [stateVideos, setVideos] = useState([
-        'https://i.imgur.com/2kYt363.jpg',
-        'https://i.imgur.com/ui71sJB.jpg',
-        'https://i.imgur.com/KQT08WM.jpg',
-        'https://i.imgur.com/ypeTJvC.jpg',
-    ])
+    const [activeVideo, setActiveVideo] = useState(null)
 
     const handleClickNext = (coeff) => {
         //effet smooth à retravailler
@@ -70,6 +66,9 @@ export const PageVideos = () => {
             caroussel.current.scrollLeft = currentScrollDelta - (delta * 0.60);
         }
     }
+    const handleOpenVideo = (lien) => {
+        setActiveVideo(lien)
+    }
 
     function onMouseWheel(e) {
         e.preventDefault()
@@ -121,51 +120,54 @@ export const PageVideos = () => {
     }, [navIsOpen])
 
     return (
-        !openNavTransiFinish &&
+        <>
+        {activeVideo &&
+            <LecteurVideo lien={activeVideo} action={setActiveVideo} />}
+        {!openNavTransiFinish &&
         <StyledPageVideos ref={caroussel} navIsOpen={navIsOpen} loadingFinish={loadingFinish} >
             {imgDisapear === false &&
                 <div className='caroussel transiOff'>
-                    {stateVideos.map((video, id) => {
+                    {projets.edges.map(({node:video}) => {
                         return (
-                            <div className='wrapper-videos' key={id}>
-                                <img alt='test' src={video} />
+                            <div className='wrapper-videos' key={video.id} onClick={() => handleOpenVideo(video.lienVideo.providerUid)}>
+                                <img alt='test' src={video.principale !== null ? video.principale.uploadId.fluid.src : video.lienVideo.thumbnailUrl} />
                                 <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2" />
                                     <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2" />
                                 </svg>
                                 <div className='wrapper-hover'>
-                                    <small>Title</small>
-                                    <small>Title</small>
+                                    <small>{video.titreProjet}</small>
+                                    <small>{video.creditLigne1}</small>
                                 </div>
                             </div>
                         )
                     })}
-                    {stateVideos.map((video, id) => {
+                    {projets.edges.map(({node:video}) => {
                         return (
-                            <div className='wrapper-videos' key={id}>
-                                <img alt='test' src={video} />
+                            <div className='wrapper-videos' key={video.id} onClick={() => handleOpenVideo(video.lienVideo.providerUid)}>
+                                <img alt='test' src={video.principale !== null ? video.principale.uploadId.fluid.src : video.lienVideo.thumbnailUrl} />
                                 <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2" />
                                     <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2" />
                                 </svg>
                                 <div className='wrapper-hover'>
-                                    <small>Title</small>
-                                    <small>Title</small>
+                                    <small>{video.titreProjet}</small>
+                                    <small>{video.creditLigne1}</small>
                                 </div>
                             </div>
                         )
                     })}
-                    {stateVideos.map((video, id) => {
+                    {projets.edges.map(({node:video}) => {
                         return (
-                            <div className='wrapper-videos' key={id}>
-                                <img alt='test' src={video} />
+                            <div className='wrapper-videos' key={video.id} onClick={() => handleOpenVideo(video.lienVideo.providerUid)}>
+                                <img alt='test' src={video.principale !== null ? video.principale.uploadId.fluid.src : video.lienVideo.thumbnailUrl} />
                                 <svg width="158" height="158" viewBox="0 0 158 158" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="79" cy="79" r="78" stroke="white" stroke-width="2" />
                                     <path d="M60 111V48L113.5 78L60 111Z" stroke="white" stroke-width="2" />
                                 </svg>
                                 <div className='wrapper-hover'>
-                                    <small>Title</small>
-                                    <small>Title</small>
+                                    <small>{video.titreProjet}</small>
+                                    <small>{video.creditLigne1}</small>
                                 </div>
                             </div>
                         )
@@ -174,6 +176,7 @@ export const PageVideos = () => {
             }
             <ContainerArrowNav navIsOpen={navIsOpen} loadingFinish={loadingFinish} handleClickNext={handleClickNext} handleClickPrev={handleClickPrev} />
             <SvgScrollToAnimate navIsOpen={navIsOpen} loadingFinish={loadingFinish} />
-        </StyledPageVideos>
+        </StyledPageVideos>}
+        </>
     )
 }

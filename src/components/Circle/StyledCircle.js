@@ -57,7 +57,7 @@ const StyledCircle = styled.div`
             }
     `}
 
-    img {
+    .img {
         width: ${({width}) => width+'vw'};
         height: ${({height}) => height+'vw'};
         z-index: -1;
