@@ -36,29 +36,99 @@ const fadeOffAbout = keyframes`
 
 const StyledPageNavigation = styled.section`
     width: 100vw;
-    height: 120vh;
+    height: 243.46vh;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #DDD8D5;
+    background: transparent;
     flex-direction: column;
     z-index: 100;
+    position: absolute;
+    z-index: 1;
+        
+        nav {
+            position: absolute;
+            top: 50.36vh;
+            transition: 500ms;
+        }
 
         .container-lien {
-            margin: 50px;
             z-index: 100;
+            display: flex;
+            justify-content: center;
+            height: 42.03vh;
+            margin-bottom: 7.5vh;
+            transition: 500ms;
+        }
+        ul .container-lien:nth-child(1) {
+            align-items: flex-end;
+            padding-bottom: 7vh;
+            transition: 500ms;
         }
         .container-lien a {
             text-decoration: none;
             color: #121212;
             opacity: 0.7;
-            font-size: 30px;
+            font-size: 50px;
             transition: 500ms;
             z-index: 100;
+            padding-top: 7vh;
+            transition: 500ms;
         }
+        .container-lien.select a {
+            font-size: 70px;
+            opacity: 1;
+            padding-bottom: 0 !important;
+            padding-top: 0 !important;
+            transition: 500ms;
+        }
+        .container-lien.select {
+            height: 42.03vh;
+            justify-content: center;
+            align-items: center !important;
+            display: flex;
+            padding-bottom: 0 !important;
+            padding-top: 0 !important;
+            transition: 500ms;
+        }
+
         .container-lien a:hover {
             transition: 500ms;
             opacity: 1;
+        }
+
+        .container-galerie {
+            height: auto;
+            width: 150vw;
+            max-width: 150vw;
+            background: #DDD8D5;
+            position: absolute;
+            top: -4.16555vh;
+            display: flex;
+            flex: auto;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .wrapper-img {
+            height: 42.03vh;
+            width: auto;
+            overflow: hidden;
+            justify-content: center;
+            display: flex;
+            margin: 4.16555vh;
+        }
+        .wrapper-img .img {
+            height: 100%;
+        }
+        
+        .filter {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            background: rgba(221, 216, 213, 0.6);
         }
 
         ${(props) => props.transiTo === 'PHOTOGRAPHY' && css`
