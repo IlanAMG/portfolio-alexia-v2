@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { PageNavigation } from '../components/PageNavigation/PageNavigation';
+// import { PageNavigation } from '../components/PageNavigation/PageNavigation';
 import { PageAbout } from '../components/PageAbout/PageAbout';
 
 const About = ({ data, location }) => {
@@ -13,7 +13,7 @@ const About = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="about" />
       <PageAbout />
-      <PageNavigation />
+      {/* <PageNavigation /> */}
     </Layout>
   )
 }

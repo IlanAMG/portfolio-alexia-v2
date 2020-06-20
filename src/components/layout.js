@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef, useContext } from "react"
 import { Header } from "./Header/Header";
 import { Loading } from '../components/Loading/Loading';
 import { onLoad } from '../../gatsby-browser';
+import { PageNavigation } from './PageNavigation/PageNavigation';
 import Context from '../utils/context';
 import { GlobalStateContext, GlobalDispatchContext } from '../utils/GlobalContextProvider';
 
@@ -79,6 +80,8 @@ const Layout = ({ location, title, children }) => {
         <Loading opacityLoading={opacityLoading} />
       }
       <main>{children}</main>
+      {openNavTransiFinish &&
+      <PageNavigation />}
     </Context.Provider>
   )
 }

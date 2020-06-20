@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 import { useStaticQuery, graphql } from "gatsby"
 import { navigate } from "@reach/router"
 import _ from 'lodash'
@@ -61,6 +61,9 @@ export const PageNavigation = () => {
     const { openNavTransiFinish, setNavIsOpen, navIsOpen, location } = useContext(Context)
     const [transiTo, setTransiTo] = useState(null)
     const [isSelect, setIsSelect] = useState([true, false, false])
+    const [isWheel, setIsWheel] = useState(false)
+
+    let timer = useRef(null)
 
     const handleClick = (e) => {
         e.preventDefault()
@@ -78,54 +81,97 @@ export const PageNavigation = () => {
         }
     }
 
-    const scrollToRef = (e) => {
-        e.persist()
+
+
+    const scrollToRef = (deltaY) => {
         const toPhoto = window.innerHeight * 0.21
         const toVideo = window.innerHeight * 0.71
         const toAbout = window.innerHeight * 1.22
-        const isScrollingDown = Math.sign(e.deltaY);
-        
+        const isScrollingDown = Math.sign(deltaY);
         let cloneIsSelect = [...isSelect]
-
-        if (cloneIsSelect[0] ) {
-            cloneIsSelect[0] = false
-            cloneIsSelect[1] = true
+        if (isWheel === false) {
+            if (cloneIsSelect[0] && isScrollingDown > 0 && Math.round(toPhoto) === window.pageYOffset) {
+                // console.log('1')
+                window.scrollTo({
+                    top: toVideo,
+                    behavior: 'smooth'
+                })
+                cloneIsSelect[0] = false
+                cloneIsSelect[1] = true
+            } else if (cloneIsSelect[2] && isScrollingDown < 0 && Math.round(toAbout) === window.pageYOffset) {
+                // console.log('2')
+                window.scrollTo({
+                    top: toVideo,
+                    behavior: 'smooth'
+                })
+                cloneIsSelect[2] = false
+                cloneIsSelect[1] = true
+            } else if (cloneIsSelect[1] && isScrollingDown < 0 && Math.round(toVideo) === window.pageYOffset) {
+                // console.log('3')
+                window.scrollTo({
+                    top: toPhoto,
+                    behavior: 'smooth'
+                })
+                cloneIsSelect[1] = false
+                cloneIsSelect[0] = true
+            } else if (cloneIsSelect[1] && isScrollingDown > 0 && Math.round(toVideo) === window.pageYOffset) {
+                // console.log('4')
+                window.scrollTo({
+                    top: toAbout,
+                    behavior: 'smooth'
+                })
+                cloneIsSelect[1] = false
+                cloneIsSelect[2] = true
+            }
             setIsSelect(cloneIsSelect)
-            window.scrollTo({
-                top: toVideo,
-                behavior: 'smooth'
-            })
-        } else if (cloneIsSelect[2]) {
-            cloneIsSelect[2] = false
-            cloneIsSelect[1] = true
-            setIsSelect(cloneIsSelect)
-            window.scrollTo({
-                top: toVideo,
-                behavior: 'smooth'
-            })
-        } else if (cloneIsSelect[1] && isScrollingDown > 0) {
-            cloneIsSelect[1] = false
-            cloneIsSelect[0] = true
-            setIsSelect(cloneIsSelect)
-            window.scrollTo({
-                top: toPhoto,
-                behavior: 'smooth'
-            })
-        } else if (cloneIsSelect[1] && isScrollingDown < 0) {
-            cloneIsSelect[1] = false
-            cloneIsSelect[2] = true
-            setIsSelect(cloneIsSelect)
-            window.scrollTo({
-                top: toAbout,
-                behavior: 'smooth'
-            })
+            setIsWheel(true)
         }
 
     }
+
+    const debouncedUpdate = _.throttle(value => scrollToRef(value), 10);
+    
     const preventWheel = (e) => {
         e.preventDefault()
     }
 
+    const useInterval = (callback, delay) => {
+        const savedCallback = useRef();
+        // Remember the latest callback.
+        useEffect(() => {
+            savedCallback.current = callback;
+        }, [callback]);
+        // Set up the interval.
+        useEffect(() => {
+            function tick() {
+                savedCallback.current();
+            }
+            if (delay !== null) {
+                let id = setInterval(tick, delay);
+                return () => clearInterval(id);
+            }
+        }, [delay]);
+    }
+    
+    const detectActiveWheel = () => {
+        if (isSelect[0] && Math.round(window.innerHeight * 0.21) === window.pageYOffset) {
+            setIsWheel(false)
+        } else if (isSelect[1] && Math.round(window.innerHeight * 0.71) === window.pageYOffset) {
+            setIsWheel(false)
+        } else if (isSelect[2] && Math.round(window.innerHeight * 1.22) === window.pageYOffset) {
+            setIsWheel(false)
+        } else {
+            setIsWheel(true)
+        }
+    }
+
+    useInterval(detectActiveWheel, 1100)
+
+
+    // useEffect(() => {
+    //     if ()
+    //     // setIsWheel(false)
+    // }, [isWheel])
     useEffect(() => {
         if (navIsOpen === false) {
             setTransiTo(null)
@@ -140,12 +186,24 @@ export const PageNavigation = () => {
     }, [openNavTransiFinish]);
 
     useEffect(() => {
-        window.addEventListener('wheel', preventWheel, {passive: false})
+        if (navIsOpen) {
+            window.addEventListener('wheel', preventWheel, {passive: false})
+        } else {
+            window.removeEventListener('wheel', preventWheel)
+        }
+    }, [navIsOpen, openNavTransiFinish])
+
+    useEffect(() => {
+        return () => window.removeEventListener('wheel', preventWheel)
     }, [])
 
     return (
         openNavTransiFinish && 
-        <StyledPageNavigation transiTo={transiTo} onWheel={_.throttle(scrollToRef,200)}>
+        <StyledPageNavigation
+            transiTo={transiTo}
+            onWheel={({ deltaY }) => debouncedUpdate(deltaY)}
+            aboutSelect={isSelect[2]} 
+        >
             <nav>
                 <ul>
                     <li className={`container-lien ${isSelect[0] ? 'select' : null}`} >

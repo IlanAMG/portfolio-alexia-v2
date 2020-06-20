@@ -45,7 +45,7 @@ const StyledPageNavigation = styled.section`
     flex-direction: column;
     z-index: 100;
     position: absolute;
-    z-index: 1;
+    z-index: 0;
         
         nav {
             position: absolute;
@@ -65,6 +65,10 @@ const StyledPageNavigation = styled.section`
             align-items: flex-end;
             padding-bottom: 7vh;
             transition: 500ms;
+        }
+        ul .container-lien:nth-child(2) {
+            align-items: ${({aboutSelect}) => aboutSelect ? 'flex-end' : 'flex-start'};
+            padding-bottom: ${({aboutSelect}) => aboutSelect ? '7vh' : 0};
         }
         .container-lien a {
             text-decoration: none;

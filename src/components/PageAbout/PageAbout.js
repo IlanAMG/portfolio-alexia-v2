@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { BsEnvelope } from 'react-icons/bs';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { Spring } from "react-spring/renderprops";
@@ -9,6 +9,12 @@ import Context from '../../utils/context';
 
 export const PageAbout = () => {
     const { openNavTransiFinish, navIsOpen, loadingFinish } = useContext(Context)
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0
+        })
+    }, [navIsOpen]);
 
     return (
         !openNavTransiFinish &&

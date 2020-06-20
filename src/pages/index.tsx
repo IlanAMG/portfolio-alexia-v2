@@ -6,7 +6,7 @@ import '../style/style.css'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { PagePhotography } from '../components/PagePhotography/PagePhotography';
-import { PageNavigation } from '../components/PageNavigation/PageNavigation';
+// import { PageNavigation } from '../components/PageNavigation/PageNavigation';
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -15,7 +15,7 @@ const BlogIndex = ({ data, location }) => {
       <Layout location={location} title={siteTitle} >
         <SEO title="Portfolio" />
           <PagePhotography projets={projets} />
-          <PageNavigation />
+          {/* <PageNavigation /> */}
       </Layout>
   )
 }
