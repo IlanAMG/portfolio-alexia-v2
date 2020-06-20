@@ -63,8 +63,6 @@ export const PageNavigation = () => {
     const [isSelect, setIsSelect] = useState([true, false, false])
     const [isWheel, setIsWheel] = useState(false)
 
-    let timer = useRef(null)
-
     const handleClick = (e) => {
         e.preventDefault()
         const direction = e.target.innerText
@@ -91,7 +89,6 @@ export const PageNavigation = () => {
         let cloneIsSelect = [...isSelect]
         if (isWheel === false) {
             if (cloneIsSelect[0] && isScrollingDown > 0 && Math.round(toPhoto) === window.pageYOffset) {
-                // console.log('1')
                 window.scrollTo({
                     top: toVideo,
                     behavior: 'smooth'
@@ -99,7 +96,6 @@ export const PageNavigation = () => {
                 cloneIsSelect[0] = false
                 cloneIsSelect[1] = true
             } else if (cloneIsSelect[2] && isScrollingDown < 0 && Math.round(toAbout) === window.pageYOffset) {
-                // console.log('2')
                 window.scrollTo({
                     top: toVideo,
                     behavior: 'smooth'
@@ -107,7 +103,6 @@ export const PageNavigation = () => {
                 cloneIsSelect[2] = false
                 cloneIsSelect[1] = true
             } else if (cloneIsSelect[1] && isScrollingDown < 0 && Math.round(toVideo) === window.pageYOffset) {
-                // console.log('3')
                 window.scrollTo({
                     top: toPhoto,
                     behavior: 'smooth'
@@ -115,7 +110,6 @@ export const PageNavigation = () => {
                 cloneIsSelect[1] = false
                 cloneIsSelect[0] = true
             } else if (cloneIsSelect[1] && isScrollingDown > 0 && Math.round(toVideo) === window.pageYOffset) {
-                // console.log('4')
                 window.scrollTo({
                     top: toAbout,
                     behavior: 'smooth'
@@ -126,7 +120,6 @@ export const PageNavigation = () => {
             setIsSelect(cloneIsSelect)
             setIsWheel(true)
         }
-
     }
 
     const debouncedUpdate = _.throttle(value => scrollToRef(value), 10);
@@ -167,11 +160,6 @@ export const PageNavigation = () => {
 
     useInterval(detectActiveWheel, 1100)
 
-
-    // useEffect(() => {
-    //     if ()
-    //     // setIsWheel(false)
-    // }, [isWheel])
     useEffect(() => {
         if (navIsOpen === false) {
             setTransiTo(null)
@@ -207,13 +195,13 @@ export const PageNavigation = () => {
             <nav>
                 <ul>
                     <li className={`container-lien ${isSelect[0] ? 'select' : null}`} >
-                        <Link onClick={handleClick} value='/'>PHOTOGRAPHY</Link>
+                        <a onClick={handleClick} value='/'>PHOTOGRAPHY</a>
                     </li>
                     <li className={`container-lien ${isSelect[1] ? 'select' : null}`}>
-                        <Link onClick={handleClick} value='/videos'>VIDEOS</Link>
+                        <a onClick={handleClick} value='/videos'>VIDEOS</a>
                     </li>
                     <li className={`container-lien ${isSelect[2] ? 'select' : null}`} >
-                        <Link onClick={handleClick} value='/about'>ABOUT</Link>
+                        <a onClick={handleClick} value='/about'>ABOUT</a>
                     </li>
                 </ul>
             </nav>

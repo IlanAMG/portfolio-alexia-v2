@@ -79,6 +79,7 @@ const StyledPageNavigation = styled.section`
             z-index: 100;
             padding-top: 7vh;
             transition: 500ms;
+            cursor: pointer;
         }
         .container-lien.select a {
             font-size: 70px;
@@ -136,16 +137,25 @@ const StyledPageNavigation = styled.section`
         }
 
         ${(props) => props.transiTo === 'PHOTOGRAPHY' && css`
+        .container-galerie {
             animation: ${fadeOffPhotography} 500ms linear forwards;
+        }
         `}
         ${(props) => props.transiTo === 'VIDEOS' && css`
+        .container-galerie {
             animation: ${fadeOffVideos} 500ms linear forwards;
+        }
         `}
         ${(props) => props.transiTo === 'ABOUT' && css`
+        .container-galerie {
             animation: ${fadeOffAbout} 500ms linear forwards !important;
+        }
         `}
         ${(props) => props.transiTo !== null && css`
             .container-lien {
+                animation: ${fadeOff} 500ms linear forwards !important;
+            }
+            .wrapper-img .img {
                 animation: ${fadeOff} 500ms linear forwards !important;
             }
         `}
