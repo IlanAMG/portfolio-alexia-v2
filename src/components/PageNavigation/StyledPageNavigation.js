@@ -174,6 +174,23 @@ const StyledPageNavigation = styled.section`
                 animation: ${fadeOff} 500ms linear forwards !important;
             }
         `}
+
+        @media screen and (max-width: 450px) {
+            .container-lien a {
+                font-size: 36px;
+            }
+            .container-lien.select a {
+                font-size: 44px;
+            }
+        }
+        @media screen and (max-width: 360px) {
+            .container-lien a {
+                font-size: 32px;
+            }
+            .container-lien.select a {
+                font-size: 37px;
+            }
+        }
 `
 
 export default StyledPageNavigation

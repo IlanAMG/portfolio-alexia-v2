@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useEffect, useState } from 'react'
 import { Spring } from "react-spring/renderprops";
+import { Link } from 'gatsby';
 
 import VisibilitySensor from '../../utils/VisibilitySensor';
 import { BtnMenu } from '../BtnMenu/BtnMenu';
@@ -63,7 +64,7 @@ export const Header = ({ title, location }) => {
                         }}>
                         {(props) => (
                             <div style={{ ...props }} className='container-title'>
-                                <h1>Alexia Amzallag</h1><h2 className='transiOff'>{title}</h2>
+                                <Link to='/' ><h1>Alexia Amzallag</h1></Link><h2 className='transiOff'>{title}</h2>
                             </div>
                         )}
                     </Spring>

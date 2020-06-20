@@ -48,6 +48,11 @@ const StyledHeader = styled.header`
     align-items: center;
     justify-content: flex-start;
 
+        .container-title a {
+            text-decoration: none;
+            color: #121212;
+        }
+
         .separator {
             align-self: flex-end;
             width: 100%;
@@ -129,6 +134,24 @@ const StyledHeader = styled.header`
             animation: ${fadeInScroll} 0.3s linear forwards;
             animation-delay: 0s !important;
         `}
+
+        @media screen and (max-width: 720px) {
+            .container-title {
+                margin-left: 15px;
+            }
+            .separator {
+                margin: 0 15px;
+            }
+        }
+        @media screen and (max-width: 630px) {
+            .container-title h1 {
+                font-size: 1.5em;
+            }
+            .container-title h2 {
+                font-size: 1.5em;
+                margin-left: 13px;
+            }
+        }
 `
 
 export default StyledHeader

@@ -161,8 +161,8 @@ const StyledPageAbout = styled.section`
             background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
         }
         .container-major .circle {
-            right: -24%;
-            top: -20%;
+            right: -14vw;
+            top: -5vh;
             background: linear-gradient(180deg, #D1B4FF 0%, rgba(255, 255, 255, 0) 100%);
             transform: rotate(-150deg);
             transform: translateY(-5vw);
@@ -321,6 +321,149 @@ const StyledPageAbout = styled.section`
                     animation-delay: 0s !important;
                 }
         `}
+
+    @media screen and (max-width: 1150px) {
+        h4 {
+            font-size: 70px;
+            line-height: 70px;
+        }
+        .container-passion p, .container-major p, .container-skills p {
+            font-size: 24px;
+            line-height: 30px;
+        }
+        .container-insta {
+            width: 95vw;
+        }
+        .container-insta .wrapper-contact small {
+            font-size: 18px;
+        }
+    }
+    @media screen and (max-width: 930px) {
+        .container-major .profil2 {
+            bottom: 0;
+        }
+        .container-skills {
+            margin-top: 8vw;
+        }
+        .container-skills .wrapper-txt {
+            padding-top: 25px;
+        }
+    }
+    @media screen and (max-width: 850px) {
+        h4 {
+            font-size: 55px;
+            line-height: 60px;
+        }
+        .container-passion p, .container-major p, .container-skills p {
+            font-size: 19px;
+            line-height: 20px;
+        }
+        .container-major .profil2 {
+            bottom: -8vw;
+        }
+        .container-major .circle {
+            top: 10vh;
+        }
+        .container-skills .circle {
+            display: none;
+        }
+        .container-insta .wrapper-contact small {
+            font-size: 17px;
+            padding: 10px;
+        }
+    }
+    @media screen and (max-width: 720px) {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .container-passion {
+            flex-direction: column;
+            align-items: center;
+            max-height: none;
+        }
+        .container-passion .profil1 {
+            height: auto;
+            width: 100%;
+        }
+        .container-major {
+            flex-direction: column-reverse;
+            align-items: center;
+            max-height: none;
+        }
+        .container-major .profil2 {
+            width: 100%;
+            height: auto;
+            position: initial;
+            top: 0;
+        }
+        .container-major .wrapper-txt {
+            width: 100%;
+            height: auto;
+            position: initial;
+        }
+        .container-major .wrapper-txt h4{
+            margin-top: 40px;
+        }
+        .container-major .wrapper-txt p{
+            text-align: left;
+            position: initial;
+        }
+        .container-skills {
+            flex-direction: column;
+            align-items: center;
+            position: initial;
+            max-height: none;
+        }
+        .container-skills .wrapper-txt {
+            margin-top: 0px;
+            width: 100%;
+        }
+        .container-skills .profil3 {
+            height: auto;
+            width: 100%;
+            position: initial;
+        }
+        .wrapper-txt {
+            margin: 30px 0;
+        }
+        .wrapper-txt h4 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .wrapper-txt p {
+            font-size: 24px;
+            line-height: 30px;
+        }
+        .container-insta {
+            margin-top: 100px;
+            flex-direction: column;
+        }
+        .container-insta .wrapper-contact {
+           margin: 30px 0;
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        .container-passion, .container-skills, .container-major {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+    @media screen and (max-width: 410px) {
+        iframe {
+        height: 335px;
+        width: 335px;
+        z-index: 2;
+    }
+
+    .lightwidget-widget {
+        border: none;
+        height: 335px;
+        width: 335px;
+        z-index: 2;
+    }
+    }
 `
 
 export default StyledPageAbout

@@ -18,6 +18,19 @@ const StyledBtnMenu = styled.div`
             position: relative;
         }
 
+        .wrapper-menu:hover .ligne {
+            width: 40px;
+            transition: 400ms;
+        }
+        .wrapper-menu:hover .ligne::before {
+            width: 30px;
+            transition: 400ms;
+        }
+        .wrapper-menu:hover .ligne::after {
+            width: 50px;
+            transition: 400ms;
+        }
+
         .ligne {
             position: absolute;
             top: 50%;
@@ -27,6 +40,7 @@ const StyledBtnMenu = styled.div`
             width: 30px;
             transition: all 0ms 300ms;
             background: #121212;
+            transition: width 400ms;
         }
         .ligne::before {
             content: '';
@@ -37,6 +51,7 @@ const StyledBtnMenu = styled.div`
             width: 50px;
             height: 2px;
             transition: bottom 300ms 300ms ease, transform 300ms ease;
+            transition: width 400ms;
         }
         .ligne::after {
             content: '';
@@ -47,6 +62,7 @@ const StyledBtnMenu = styled.div`
             width: 40px;
             height: 2px;
             transition: top 300ms 300ms ease, transform 300ms ease;
+            transition: width 400ms;
         }
 
         .wrapper-menu.wrapper-croix .ligne::before{
@@ -68,6 +84,10 @@ const StyledBtnMenu = styled.div`
             transform: rotate(45deg);
             background: #121212;
             transition: top 300ms ease, transform 300ms 300ms ease;
+        }
+
+        @media screen and (max-width: 720px) {
+            right: 15px;
         }
 `
 

@@ -29,6 +29,7 @@ const fadeOffImg = keyframes`
 
 const StyledBlogPost = styled.div`
     width: 100vw;
+    min-height: 100vh;
     background: linear-gradient(358.59deg, #E9D6FF 0.14%, #FFFFFF 98.87%);
     position: absolute;
         .container-credits {
