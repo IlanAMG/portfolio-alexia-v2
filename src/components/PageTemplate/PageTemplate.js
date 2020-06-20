@@ -5,11 +5,10 @@ import StyledBlogPost from './StyledBlogPost';
 import Context from '../../utils/context';
 
 export const PageTemplate = ({ galerie, previous, next, post, creditLigne1, creditLigne2, creditLigne3, creditLigne4, creditLigne5, creditLigne6 }) => {
-    const { navIsOpen } = useContext(Context)
-    console.log(creditLigne1)
+    const { navIsOpen, openNavTransiFinish } = useContext(Context)
     return (
-        !navIsOpen &&
-            <StyledBlogPost>
+        !openNavTransiFinish &&
+            <StyledBlogPost navIsOpen={navIsOpen}>
               <div className='container-credits'>
                 {creditLigne1 !== '' &&
                 <span>

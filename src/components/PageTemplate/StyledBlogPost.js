@@ -1,4 +1,31 @@
-import styled from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
+
+const fadeIn = keyframes`
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+`
+const fadeOff = keyframes`
+    from {
+        background: linear-gradient(358.59deg, #E9D6FF 0.14%, #FFFFFF 98.87%);
+    }
+    to {
+        background: #DDD8D5;
+    }
+`
+const fadeOffImg = keyframes`
+    from {
+        opacity: 1;
+        transform: scale(1)
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9)
+    }
+`
 
 const StyledBlogPost = styled.div`
     width: 100vw;
@@ -11,6 +38,7 @@ const StyledBlogPost = styled.div`
             align-items: flex-start;
             jusitfy-content: center;
             flex-direction: column;
+            animation: ${fadeIn} 600ms linear forwards;
         }
 
         .galerie {
@@ -22,25 +50,14 @@ const StyledBlogPost = styled.div`
 
         .galerie img {
             width: 100%;
+            animation: ${fadeIn} 900ms linear forwards;
         }
         .galerie .wrapper-img {
             max-width: 100%;
             margin-bottom: 85px;
             overflow: hidden;
         }
-${'' /* 
-        .galerie .wrapper-img:nth-child(2), .wrapper-img:nth-child(3) {
-            width: 50%;
-            height: 1000px;
-        }
-        .galerie .wrapper-img:nth-child(5), .wrapper-img:nth-child(6) {
-            width: 50%;
-            max-height: 1200px;
-        }
-        .galerie .wrapper-img:nth-child(8), .wrapper-img:nth-child(9) {
-            width: 50%;
-            max-height: 1200px;
-        } */}
+
         footer {
             width: 100vw;
             height: 120px;
@@ -92,6 +109,15 @@ ${'' /*
             line-height: 13px;
             text-align: center;
         }
+
+        ${(props) => props.navIsOpen === true && css`
+            animation: ${fadeOff} 300ms linear forwards;
+            animation-delay: 0s !important;
+                .galerie img, .container-credits, footer, span {
+                    animation: ${fadeOffImg} 500ms linear forwards;
+                    animation-delay: 0s !important; 
+                }
+        `}
 `
 
 export default StyledBlogPost

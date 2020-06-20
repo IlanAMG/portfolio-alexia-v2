@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { PageNavigation } from '../components/PageNavigation/PageNavigation';
 import { PageTemplate } from '../components/PageTemplate/PageTemplate';
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
@@ -62,7 +61,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         creditLigne4={post.creditLigne4}
         creditLigne5={post.creditLigne5}
         creditLigne6={post.creditLigne6} />
-      <PageNavigation />
     </Layout>
   )
 }

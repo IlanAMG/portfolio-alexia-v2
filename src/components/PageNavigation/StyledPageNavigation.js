@@ -1,5 +1,14 @@
 import styled, { keyframes, css } from 'styled-components'
 
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;;
+    }
+`
+
 const fadeOff = keyframes`
     from {
         opacity: 1;
@@ -41,7 +50,6 @@ const StyledPageNavigation = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
     flex-direction: column;
     z-index: 100;
     position: absolute;
@@ -73,20 +81,22 @@ const StyledPageNavigation = styled.section`
         .container-lien a {
             text-decoration: none;
             color: #121212;
-            opacity: 0.7;
             font-size: 50px;
             transition: 500ms;
             z-index: 100;
             padding-top: 7vh;
             transition: 500ms;
             cursor: pointer;
+            opacity: 0;
+            animation: ${fadeIn} 900ms linear forwards !important;
         }
         .container-lien.select a {
             font-size: 70px;
-            opacity: 1;
+            opacity: 0;
             padding-bottom: 0 !important;
             padding-top: 0 !important;
             transition: 500ms;
+            animation: ${fadeIn} 900ms linear forwards !important;
         }
         .container-lien.select {
             height: 42.03vh;
@@ -114,6 +124,8 @@ const StyledPageNavigation = styled.section`
             flex: auto;
             flex-wrap: wrap;
             justify-content: flex-start;
+            ${'' /* animation: ${fadeIn} 1000ms ease-in forwards !important; */}
+            opacity: 0.
         }
 
         .wrapper-img {
@@ -137,19 +149,22 @@ const StyledPageNavigation = styled.section`
         }
 
         ${(props) => props.transiTo === 'PHOTOGRAPHY' && css`
-        .container-galerie {
-            animation: ${fadeOffPhotography} 500ms linear forwards;
-        }
+        animation: ${fadeOffPhotography} 500ms linear forwards;
+            .container-galerie {
+                animation: ${fadeOffPhotography} 500ms linear forwards;
+            }
         `}
         ${(props) => props.transiTo === 'VIDEOS' && css`
-        .container-galerie {
-            animation: ${fadeOffVideos} 500ms linear forwards;
-        }
+        animation: ${fadeOffVideos} 500ms linear forwards;
+            .container-galerie {
+                animation: ${fadeOffVideos} 500ms linear forwards;
+            }
         `}
         ${(props) => props.transiTo === 'ABOUT' && css`
-        .container-galerie {
-            animation: ${fadeOffAbout} 500ms linear forwards !important;
-        }
+        animation: ${fadeOffAbout} 500ms linear forwards !important;
+            .container-galerie {
+                animation: ${fadeOffAbout} 500ms linear forwards !important;
+            }
         `}
         ${(props) => props.transiTo !== null && css`
             .container-lien {

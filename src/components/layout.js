@@ -68,7 +68,7 @@ const Layout = ({ location, title, children }) => {
         }, 600)
     } else {
         clearTimeout(timer.current)
-          setOpenNavTransiFinish(false);
+        setOpenNavTransiFinish(false);
     }
 }, [navIsOpen])
 
