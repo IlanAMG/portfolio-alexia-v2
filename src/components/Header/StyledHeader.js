@@ -152,6 +152,24 @@ const StyledHeader = styled.header`
                 margin-left: 13px;
             }
         }
+        @media screen and (max-width: 500px) {
+            .container-title {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+            }
+            .container-title h1{
+                line-height: 1;
+                margin-bottom: 3px;
+            }
+            .container-title h2 {
+                line-height: 1;
+                margin-top: 3px;
+                margin-left: 0;
+                text-align: left;
+            }
+        }
 `
 
 export default StyledHeader

@@ -21,6 +21,10 @@ const StyledScrollToAnimate = styled.svg`
         opacity: 0;
         transition: 500ms;
     `}
+
+    @media screen and (max-width: 500px) {
+        display: none;
+    }
 `
 
 export default StyledScrollToAnimate

@@ -207,55 +207,69 @@ export const PageNavigation = () => {
             </nav>
             <div className='container-galerie'>
                 <div className='filter' />
-                {second.edges.map(({node:photo}) => {
-                    return (
-                        <div className='wrapper-img'>
-                            <img className='img' alt='galerie' src={photo.principale.fluid.src} />
-                        </div>
-                    )
-                })}
-                {first.edges.map(({node:photo}) => {
-                    return (
-                        <div className='wrapper-img'>
-                            <img className='img' alt='galerie' src={photo.principale.fluid.src} />
-                        </div>
-                    )
-                })}
-                {second.edges.map(({node:photo}) => {
-                    return (
-                        <div className='wrapper-img'>
-                            <img className='img' alt='galerie' src={photo.principale.fluid.src} />
-                        </div>
-                    )
-                })}
-                {third.edges.map(({node:photo}) => {
-                    return (
-                        <div className='wrapper-img'>
-                            <img className='img' alt='galerie' src={photo.principale.fluid.src} />
-                        </div>
-                    )
-                })}
-                {fourth.edges.map(({node:photo}) => {
-                    return (
-                        <div className='wrapper-img'>
-                            <img className='img' alt='galerie' src={photo.principale.fluid.src} />
-                        </div>
-                    )
-                })}
-                {first.edges.map(({node:photo}) => {
-                    return (
-                        <div className='wrapper-img'>
-                            <img className='img' alt='galerie' src={photo.principale.fluid.src} />
-                        </div>
-                    )
-                })}
-                {second.edges.map(({node:photo}) => {
-                    return (
-                        <div className='wrapper-img'>
-                            <img className='img' alt='galerie' src={photo.principale.fluid.src} />
-                        </div>
-                    )
-                })}
+                <div className='row'>
+                    {second.edges.map(({node:photo}) => {
+                        return (
+                            <div className='wrapper-img'>
+                                <img className='img' alt='galerie' src={photo.principale.fluid.src} />
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className='row'>
+                    {first.edges.map(({node:photo}) => {
+                        return (
+                            <div className='wrapper-img'>
+                                <img className='img' alt='galerie' src={photo.principale.fluid.src} />
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className='row'>
+                    {second.edges.map(({node:photo}) => {
+                        return (
+                            <div className='wrapper-img'>
+                                <img className='img' alt='galerie' src={photo.principale.fluid.src} />
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className='row'>
+                    {third.edges.map(({node:photo}) => {
+                        return (
+                            <div className='wrapper-img'>
+                                <img className='img' alt='galerie' src={photo.principale.fluid.src} />
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className='row'>
+                    {fourth.edges.map(({node:photo}) => {
+                        return (
+                            <div className='wrapper-img'>
+                                <img className='img' alt='galerie' src={photo.principale.fluid.src} />
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className='row'>
+                    {first.edges.map(({node:photo}) => {
+                        return (
+                            <div className='wrapper-img'>
+                                <img className='img' alt='galerie' src={photo.principale.fluid.src} />
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className='row'>
+                    {second.edges.map(({node:photo}) => {
+                        return (
+                            <div className='wrapper-img'>
+                                <img className='img' alt='galerie' src={photo.principale.fluid.src} />
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </StyledPageNavigation>
     )

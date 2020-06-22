@@ -121,9 +121,8 @@ const StyledPageNavigation = styled.section`
             position: absolute;
             top: -4.16555vh;
             display: flex;
-            flex: auto;
-            flex-wrap: wrap;
-            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
             ${'' /* animation: ${fadeIn} 1000ms ease-in forwards !important; */}
             opacity: 0.
         }
@@ -146,6 +145,12 @@ const StyledPageNavigation = styled.section`
             height: 100%;
             z-index: 3;
             background: rgba(221, 216, 213, 0.6);
+        }
+        .row {
+            display: flex;
+               justify-content: center;
+               overflow: hidden;
+               width: 100%;
         }
 
         ${(props) => props.transiTo === 'PHOTOGRAPHY' && css`
@@ -175,7 +180,23 @@ const StyledPageNavigation = styled.section`
             }
         `}
 
-        @media screen and (max-width: 450px) {
+        @media screen and (max-width: 1200px) {
+           .container-galerie {
+                flex-wrap: nowrap;
+                flex-direction: column;
+                flex: none;
+           }
+           .row {
+               display: flex;
+               justify-content: center;
+               overflow: hidden;
+               width: 100%;
+           }
+           .wrapper-img {
+            min-width: 200px;
+        }
+        }
+        @media screen and (max-width: 550px) {
             .container-lien a {
                 font-size: 36px;
             }
