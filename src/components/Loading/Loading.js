@@ -50,7 +50,7 @@ export const Loading = ({ opacityLoading }) => {
   const url4 = datoCmsLoadingpage.photo4.fluid
 
   return (
-    <StyledLoading finish={opacityLoading} >
+    <StyledLoading  >
       <VisibilitySensor partialVisiblity offset={{ top: -100 }} intervalDelay={500} delayedCall once>
         {({ isVisible }) => (
           <Spring

@@ -25,6 +25,8 @@ const StyledLoading = styled.section`
             height: 18vw;
             max-width: 300px;
             max-height: 300px;
+            min-width: 200px;
+            min-height: 200px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
             border-radius: 50%;
             overflow: hidden;
@@ -63,6 +65,11 @@ const StyledLoading = styled.section`
             animation-delay: 1s;
             animation: ${vague} 3.7s ease-in forwards;
             z-index: 9;
+        }
+
+        @media screen and (max-width: 540px) {
+            right: 4.5%;
+            top: 15.25%;
         }
 `
 

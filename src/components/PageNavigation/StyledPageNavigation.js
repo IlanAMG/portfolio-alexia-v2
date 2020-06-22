@@ -203,6 +203,10 @@ const StyledPageNavigation = styled.section`
             .container-lien.select a {
                 font-size: 44px;
             }
+            .wrapper-img {
+                height: 32.03vh;
+                margin: 2.16555vh;
+            }
         }
         @media screen and (max-width: 360px) {
             .container-lien a {

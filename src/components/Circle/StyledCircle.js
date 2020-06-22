@@ -71,6 +71,44 @@ const StyledCircle = styled.div`
         position: absolute; 
         border-radius: 50%;  
     }
+
+    @media screen and (max-width: 730px) {
+            min-width: 180px;
+            min-height: 180px;
+
+            ${(props) => props.num === 1 && css`
+                left: 6.87vw;
+                top: -80px;
+                animation: ${circleAround2} 8s linear infinite;
+                    .filtre {
+                        background: linear-gradient(70deg, rgba(209, 180, 255, 0.7) 0%, rgba(209, 180, 255, 0) 100%);
+                    }
+            `}
+            ${(props) => props.num === 2 && css`
+                left: 34.84vw;
+                top: 49.90vh;
+                animation: ${circleAround1} 11s linear infinite;
+                    .filtre {
+                        background: linear-gradient(-90deg, rgba(209, 180, 255, 0.4) 0%, rgba(209, 180, 255, 0) 100%); 
+                    }
+            `}
+            ${(props) => props.num === 3 && css`
+                bottom: -40px;
+                left: -30px;
+                animation: ${circleAround2} 10s linear infinite;
+                    .filtre {
+                        background: linear-gradient(-110deg, rgba(209, 180, 255, 0.7) 0%, rgba(209, 180, 255, 0) 100%);
+                    }
+            `}
+            ${(props) => props.num === 4 && css`
+                bottom: -70px;
+                right: -20px;
+                animation: ${circleAround1} 7s linear infinite;
+                    .filtre {
+                        background: linear-gradient(110deg, rgba(209, 180, 255, 0.7) 0%, rgba(209, 180, 255, 0) 100%);
+                    }
+            `}
+        }
     
 `
 

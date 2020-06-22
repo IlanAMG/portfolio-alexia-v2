@@ -57,7 +57,36 @@ const StyledLoading = styled.section`
 
         ${props => props.finish && css`
             animation: ${fade} 500ms linear forwards;
-        `}         
+        `}    
+
+        @media screen and (max-width: 830px) {
+          .container-bienvenue h4 {
+            font-size: 13px;
+            line-height: 19px;
+          }
+          .container-bienvenue h5 {
+            font-size: 30px;
+            line-height: 43px;
+          }
+        }
+
+        @media screen and (max-width: 540px) {
+          .container-bienvenue {
+            margin: 8vh 0 0 5vw;
+            width: 80vw;
+          }
+
+          .devtrotter-small {
+            font-size: 11px;
+            line-height: 13px;
+          }
+        }
+        @media screen and (max-width: 400px) {
+          .container-bienvenue {
+            margin: 16vh 2vw 2vw 5vw;
+            width: 100vw;
+          }
+        }
 `
 
 export default StyledLoading
