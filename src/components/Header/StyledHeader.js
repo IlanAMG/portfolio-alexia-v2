@@ -170,6 +170,10 @@ const StyledHeader = styled.header`
                 text-align: left;
             }
         }
+
+        @media (max-width: 815px) and (max-height: 380px) {
+            height: 50px;
+        }
 `
 
 export default StyledHeader

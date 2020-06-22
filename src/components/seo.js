@@ -40,7 +40,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           property: `og:title`,
-          content: title,
+          content: {title} + '| Portfolio',
         },
         {
           property: `og:description`,
@@ -51,12 +51,20 @@ const SEO = ({ description, lang, meta, title }) => {
           content: `website`,
         },
         {
+          property: `og:image`,
+          content: '/seoMetaImg.png',
+        },
+        {
+          property: `twitter:image`,
+          content: '/seoMetaImg.png',
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: {title} + '| Portfolio',
         },
         {
           name: `twitter:description`,

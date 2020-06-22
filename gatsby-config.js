@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Alexia Amzallag`,
-    description: `Portfolio Alexia Amzallag | Make-up Artist in Paris.`,
+    description: `Make-up Artist in Paris - Passionate about art I have decided at a young age to made this passion my job. I am always looking for oppotunities to practice my art, I wish to bring up my arts in the make-up industry.`,
     siteUrl: `https://alexiamzallag.com`,
   },
   plugins: [
@@ -59,13 +59,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Alexia Amzallag | Portfolio`,
+        short_name: `Alexia Amzallag`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#ead8fe`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/favicon.png`,
       },
     },
     `gatsby-plugin-react-helmet`,

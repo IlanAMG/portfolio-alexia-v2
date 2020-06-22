@@ -61,9 +61,8 @@ export const PageNavigation = () => {
     const [transiTo, setTransiTo] = useState(null)
     const [isSelect, setIsSelect] = useState([true, false, false])
     const [isWheel, setIsWheel] = useState(false)
-    
-    let touchStart = useRef(null)
-    let touchEnd = useRef(null)
+    const [touchStart, setTouchStart] = useState(null)
+    const [touchEnd, setTouchEnd] = useState(null)
 
     const handleClick = (e) => {
         e.preventDefault()
@@ -82,11 +81,14 @@ export const PageNavigation = () => {
     }
 
     const handleTouchStart = (e) => {
-        touchStart.current = e.changedTouches[0].clientY
+        const touchStartY = e.changedTouches[0].clientY
+        console.log(touchStartY)
+        setTouchStart(touchStartY)
     }
     const handleTouchEnd = (e) => {
-        touchEnd.current = e.changedTouches[0].clientY
-        scrollToRefMobile()
+        const touchEndY = e.changedTouches[0].clientY
+        console.log(touchEndY)
+        setTouchEnd(touchEndY)
     }
 
     const scrollToRefMobile = () => {
@@ -95,29 +97,29 @@ export const PageNavigation = () => {
         const toAbout = window.innerHeight * 1.22
 
         let cloneIsSelect = [...isSelect]
-        if (touchStart.current !== null && touchEnd.current !== null) {
-            if (cloneIsSelect[0] && Math.round(toPhoto) === window.pageYOffset && touchStart.current > touchEnd.current) {
+        if (touchStart !== null && touchEnd !== null) {
+            if (cloneIsSelect[0] && toPhoto <= window.pageYOffset + 1 && toPhoto >= window.pageYOffset - 1 && touchStart > touchEnd) {
                 window.scrollTo({
                     top: toVideo,
                     behavior: 'smooth'
                 })
                 cloneIsSelect[0] = false
                 cloneIsSelect[1] = true
-            } else if (cloneIsSelect[2] && Math.round(toAbout) === window.pageYOffset && touchStart.current < touchEnd.current) {
+            } else if (cloneIsSelect[2] && Math.round(toAbout) === window.pageYOffset && touchStart < touchEnd) {
                 window.scrollTo({
                     top: toVideo,
                     behavior: 'smooth'
                 })
                 cloneIsSelect[2] = false
                 cloneIsSelect[1] = true
-            } else if (cloneIsSelect[1] && Math.round(toVideo) === window.pageYOffset && touchStart.current < touchEnd.current) {
+            } else if (cloneIsSelect[1] && Math.round(toVideo) === window.pageYOffset && touchStart < touchEnd) {
                 window.scrollTo({
                     top: toPhoto,
                     behavior: 'smooth'
                 })
                 cloneIsSelect[1] = false
                 cloneIsSelect[0] = true
-            } else if (cloneIsSelect[1] && Math.round(toVideo) === window.pageYOffset && touchStart.current > touchEnd.current) {
+            } else if (cloneIsSelect[1] && Math.round(toVideo) === window.pageYOffset && touchStart > touchEnd) {
                 window.scrollTo({
                     top: toAbout,
                     behavior: 'smooth'
@@ -126,8 +128,8 @@ export const PageNavigation = () => {
                 cloneIsSelect[2] = true
             }
             setIsSelect(cloneIsSelect)
-            touchStart.current = null
-            touchEnd.current = null
+            setTouchStart(null)
+            setTouchEnd(null)
         }
     }
 
@@ -211,6 +213,10 @@ export const PageNavigation = () => {
     useInterval(detectActiveWheel, 1100)
 
     useEffect(() => {
+        scrollToRefMobile()
+    }, [touchEnd])
+
+    useEffect(() => {
         if (navIsOpen === false) {
             setTransiTo(null)
         }
@@ -246,9 +252,9 @@ export const PageNavigation = () => {
         <StyledPageNavigation
             transiTo={transiTo}
             onWheel={({ deltaY }) => debouncedUpdate(deltaY)}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
             aboutSelect={isSelect[2]} 
+            onTouchStart={handleTouchStart} 
+            onTouchEnd={handleTouchEnd}
         >
             <nav>
                 <ul>
