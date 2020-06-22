@@ -43,7 +43,7 @@ export const PageAbout = () => {
             <div className='container-skills'>
                 <img className='profil3' alt='profil3' src={'https://i.imgur.com/Eqt4yUW.jpg'} />
                 <div className='wrapper-txt'>
-                    <VisibilitySensor partialVisiblity offset={{ top: -50 }} once>
+                    <VisibilitySensor partialVisiblity offset={window.innerWidth > 720 ? { top: -50 } : { right: -50}} once>
                         {({ isVisible }) => (
                             <Spring
                                 to={{
@@ -58,7 +58,7 @@ export const PageAbout = () => {
                             </Spring>
                         )}
                     </VisibilitySensor>
-                    <VisibilitySensor partialVisiblity offset={{ top: -50 }} intervalDelay={200} delayedCall once>
+                    <VisibilitySensor partialVisiblity offset={window.innerWidth > 720 ? { top: -50 } : { right: -50}} intervalDelay={200} delayedCall once>
                         {({ isVisible }) => (
                             <Spring
                                 to={{
