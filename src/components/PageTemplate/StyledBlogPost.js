@@ -57,6 +57,13 @@ const StyledBlogPost = styled.div`
             max-width: 100%;
             margin-bottom: 85px;
             overflow: hidden;
+            max-height: 1000px !important;
+        }
+
+        @media screen and (max-width: 670px) {
+            .galerie .wrapper-img {
+                width: 100% !important;
+            }
         }
 
         footer {

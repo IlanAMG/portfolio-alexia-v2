@@ -259,13 +259,22 @@ export const PageNavigation = () => {
             <nav>
                 <ul>
                     <li className={`container-lien ${isSelect[0] ? 'select' : null}`} >
-                        <a onClick={handleClick} value='/'>PHOTOGRAPHY</a>
+                        <div className='wrapper-link'>
+                            <a onClick={handleClick} value='/'>PHOTOGRAPHY</a>
+                            <div className='bg-hover photo'/>
+                        </div>
                     </li>
                     <li className={`container-lien ${isSelect[1] ? 'select' : null}`}>
-                        <a onClick={handleClick} value='/videos'>VIDEOS</a>
+                        <div className='wrapper-link'>
+                            <a onClick={handleClick} value='/videos'>VIDEOS</a>
+                            <div className='bg-hover video'/>
+                        </div>
                     </li>
                     <li className={`container-lien ${isSelect[2] ? 'select' : null}`} >
-                        <a onClick={handleClick} value='/about'>ABOUT</a>
+                        <div className='wrapper-link'>
+                            <a onClick={handleClick} value='/about'>ABOUT</a>
+                            <div className='bg-hover about'/>
+                        </div>
                     </li>
                 </ul>
             </nav>

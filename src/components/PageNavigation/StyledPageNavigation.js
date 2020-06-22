@@ -59,6 +59,7 @@ const StyledPageNavigation = styled.section`
             position: absolute;
             top: 50.36vh;
             transition: 500ms;
+            z-index: 10;
         }
 
         .container-lien {
@@ -78,6 +79,11 @@ const StyledPageNavigation = styled.section`
             align-items: ${({aboutSelect}) => aboutSelect ? 'flex-end' : 'flex-start'};
             padding-bottom: ${({aboutSelect}) => aboutSelect ? '7vh' : 0};
         }
+        ul .container-lien:nth-child(3) {
+            align-items: flex-start;
+            padding-top: 7vh;
+            transition: 500ms;
+        }
         .container-lien a {
             text-decoration: none;
             color: #121212;
@@ -89,6 +95,7 @@ const StyledPageNavigation = styled.section`
             cursor: pointer;
             opacity: 0;
             animation: ${fadeIn} 900ms linear forwards !important;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
         .container-lien.select a {
             font-size: 70px;
@@ -111,6 +118,29 @@ const StyledPageNavigation = styled.section`
         .container-lien a:hover {
             transition: 500ms;
             opacity: 1;
+        }
+
+        .container-lien .wrapper-link {
+            position: relative;
+        }
+
+        .container-lien .bg-hover {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        .container-lien .bg-hover.photo {
+            background: linear-gradient(0deg, #E9D6FF 0%, rgba(233, 214, 255, 0.15) 128.38%);
+        }
+        .container-lien .bg-hover.video {
+            background: linear-gradient(360deg, #D1DAFF 0%, rgba(255, 255, 255, 0) 137.5%);
+        }
+        .container-lien .bg-hover.about {
+            background: linear-gradient(360deg, #F6E6FB 0%, rgba(246, 230, 251, 0) 136.49%);
         }
 
         .container-galerie {

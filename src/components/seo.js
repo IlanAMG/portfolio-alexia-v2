@@ -64,7 +64,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           name: `twitter:title`,
-          content: {title} + '| Portfolio',
+          content: `Alexia Amzallag | ${title}`,
         },
         {
           name: `twitter:description`,
