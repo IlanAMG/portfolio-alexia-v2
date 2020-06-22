@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { BsEnvelope } from 'react-icons/bs';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { Spring } from "react-spring/renderprops";
@@ -9,21 +9,12 @@ import Context from '../../utils/context';
 
 export const PageAbout = () => {
     const { openNavTransiFinish, navIsOpen, loadingFinish } = useContext(Context)
-    const [isMobile, setMobile] = useState(false)
 
     useEffect(() => {
         window.scrollTo({
             top: 0
         })
     }, [navIsOpen]);
-    useEffect(() => {
-        if (window.innerWidth > 720) {
-            setMobile(false)
-        } else {
-            setMobile(true)
-        }
-    }, [window.innerWidth]);
-
 
     return (
         !openNavTransiFinish &&
@@ -51,7 +42,7 @@ export const PageAbout = () => {
             <div className='container-skills'>
                 <img className='profil3' alt='profil3' src={'https://i.imgur.com/Eqt4yUW.jpg'} />
                 <div className='wrapper-txt'>
-                    <VisibilitySensor partialVisiblity offset={isMobile ? { top: -50 } : { right: -50}} once>
+                    <VisibilitySensor partialVisiblity offset={{ right: -50}} once>
                         {({ isVisible }) => (
                             <Spring
                                 to={{
@@ -66,7 +57,7 @@ export const PageAbout = () => {
                             </Spring>
                         )}
                     </VisibilitySensor>
-                    <VisibilitySensor partialVisiblity offset={isMobile ? { top: -50 } : { right: -50}} intervalDelay={200} delayedCall once>
+                    <VisibilitySensor partialVisiblity offset={{right: -50}} intervalDelay={200} delayedCall once>
                         {({ isVisible }) => (
                             <Spring
                                 to={{
