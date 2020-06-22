@@ -105,21 +105,21 @@ export const PageNavigation = () => {
                 })
                 cloneIsSelect[0] = false
                 cloneIsSelect[1] = true
-            } else if (cloneIsSelect[2] && Math.round(toAbout) === window.pageYOffset && touchStart < touchEnd) {
+            } else if (cloneIsSelect[2] && toAbout <= window.pageYOffset + 1 && toAbout >= window.pageYOffset - 1 && touchStart < touchEnd) {
                 window.scrollTo({
                     top: toVideo,
                     behavior: 'smooth'
                 })
                 cloneIsSelect[2] = false
                 cloneIsSelect[1] = true
-            } else if (cloneIsSelect[1] && Math.round(toVideo) === window.pageYOffset && touchStart < touchEnd) {
+            } else if (cloneIsSelect[1] && toVideo <= window.pageYOffset + 1 && toVideo >= window.pageYOffset - 1 && touchStart < touchEnd) {
                 window.scrollTo({
                     top: toPhoto,
                     behavior: 'smooth'
                 })
                 cloneIsSelect[1] = false
                 cloneIsSelect[0] = true
-            } else if (cloneIsSelect[1] && Math.round(toVideo) === window.pageYOffset && touchStart > touchEnd) {
+            } else if (cloneIsSelect[1] && toVideo <= window.pageYOffset + 1 && toVideo >= window.pageYOffset - 1 && touchStart > touchEnd) {
                 window.scrollTo({
                     top: toAbout,
                     behavior: 'smooth'
