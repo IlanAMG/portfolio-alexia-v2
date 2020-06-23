@@ -76,16 +76,19 @@ export const PagePhotography = ({ projets }) => {
     }
 
     function onMouseWheel(e) {
-        e.preventDefault()
-        const currentScrollDelta = caroussel.current.scrollLeft
-        setCarousselScrollLeft(currentScrollDelta)
         if (e.deltaY) {
+            e.preventDefault()
+            const currentScrollDelta = caroussel.current.scrollLeft
+            setCarousselScrollLeft(currentScrollDelta)
             if (e.deltaY !== 0) {
                 caroussel.current.scrollLeft = currentScrollDelta + (e.deltaY * 0.60);
             } else {
                 caroussel.current.scrollLeft = currentScrollDelta + (e.deltaX * 0.60);
             }
-        } 
+        } else {
+            const currentScrollDelta = caroussel.current.scrollLeft
+            setCarousselScrollLeft(currentScrollDelta)
+        }
     }
     useEffect(() => {
         if (pageLoad && !navIsOpen) {
