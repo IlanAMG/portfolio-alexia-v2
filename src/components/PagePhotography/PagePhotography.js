@@ -67,13 +67,13 @@ export const PagePhotography = ({ projets }) => {
         }
     }
 
-    const startTouchMove = (e) => {
-        const start = e.changedTouches[0].clientX
-        startTouch.current = start
-    }
-    const endTouchMove = () => {
-        startTouch.current = null
-    }
+    // const startTouchMove = (e) => {
+    //     const start = e.changedTouches[0].clientX
+    //     startTouch.current = start
+    // }
+    // const endTouchMove = () => {
+    //     startTouch.current = null
+    // }
 
     function onMouseWheel(e) {
         if (e.deltaY) {

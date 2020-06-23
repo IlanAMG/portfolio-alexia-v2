@@ -83,8 +83,16 @@ const StyledLoading = styled.section`
         }
         @media screen and (max-width: 400px) {
           .container-bienvenue {
-            margin: 16vh 2vw 2vw 5vw;
+            margin: 16vh 4vw 4vw 5vw;
             width: 100vw;
+          }
+          .container-bienvenue h4 {
+            font-size: 11px;
+            line-height: 16px;
+          }
+          .container-bienvenue h5 {
+            font-size: 22px;
+            line-height: 32px;
           }
         }
 `

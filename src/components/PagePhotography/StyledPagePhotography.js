@@ -97,6 +97,22 @@ const StyledPagePhotography = styled.section`
             text-decoration: none;
         }
 
+        @media screen and (max-height: 630px) {
+            .wrapper-photos small {
+                font-size: 14px;
+            } 
+        }
+        @media screen and (max-height: 500px) {
+            .wrapper-photos small {
+                font-size: 12px;
+            } 
+        }
+        @media screen and (max-height: 360px) {
+            .wrapper-photos small {
+                font-size: 9px;
+            } 
+        }
+
         ${(props) => props.navIsOpen === true && css`
             background: #DDD8D5 !important;
             transition: 200ms;

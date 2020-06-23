@@ -82,12 +82,10 @@ export const PageNavigation = () => {
 
     const handleTouchStart = (e) => {
         const touchStartY = e.changedTouches[0].clientY
-        console.log(touchStartY)
         setTouchStart(touchStartY)
     }
     const handleTouchEnd = (e) => {
         const touchEndY = e.changedTouches[0].clientY
-        console.log(touchEndY)
         setTouchEnd(touchEndY)
     }
 

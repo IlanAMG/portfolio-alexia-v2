@@ -174,6 +174,9 @@ const StyledHeader = styled.header`
         @media (max-width: 815px) and (max-height: 380px) {
             height: 50px;
         }
+        @media (max-height: 450px) {
+            height: 50px;
+        }
 `
 
 export default StyledHeader

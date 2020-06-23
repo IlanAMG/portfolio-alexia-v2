@@ -71,13 +71,18 @@ export const PageVideos = ({ projets }) => {
     }
 
     function onMouseWheel(e) {
-        e.preventDefault()
-        const currentScrollDelta = caroussel.current.scrollLeft
-        setCarousselScrollLeft(currentScrollDelta)
-        if (e.deltaY !== 0) {
-            caroussel.current.scrollLeft = currentScrollDelta + (e.deltaY * 0.60);
+        if (e.deltaY) {
+            e.preventDefault()
+            const currentScrollDelta = caroussel.current.scrollLeft
+            setCarousselScrollLeft(currentScrollDelta)
+            if (e.deltaY !== 0) {
+                caroussel.current.scrollLeft = currentScrollDelta + (e.deltaY * 0.60);
+            } else {
+                caroussel.current.scrollLeft = currentScrollDelta + (e.deltaX * 0.60);
+            }
         } else {
-            caroussel.current.scrollLeft = currentScrollDelta + (e.deltaX * 0.60);
+            const currentScrollDelta = caroussel.current.scrollLeft
+            setCarousselScrollLeft(currentScrollDelta)
         }
     }
 
@@ -99,7 +104,12 @@ export const PageVideos = ({ projets }) => {
 
     useEffect(() => {
         window.addEventListener('wheel', onMouseWheel, { passive: false })
+        window.addEventListener('touchMove', onMouseWheel, { passive: false })
     }, [navIsOpen])
+
+    useEffect(() => {
+        return () => window.removeEventListener('touchmove', onMouseWheel, {passive: false})
+    }, [])
 
     useEffect(() => {
         if (navIsOpen) {
