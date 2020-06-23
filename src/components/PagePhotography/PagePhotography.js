@@ -102,14 +102,14 @@ export const PagePhotography = ({ projets }) => {
     useEffect(() => {
         window.addEventListener('wheel', onMouseWheel, {passive: false})
         // window.addEventListener('touchstart', startTouchMove, {passive: false})
-        // window.addEventListener('touchmove', onMouseWheel, {passive: false})
+        window.addEventListener('touchmove', onMouseWheel, {passive: false})
         // window.addEventListener('touchend', endTouchMove, {passive: false})
     }, [navIsOpen])
     useEffect(() => {
         if (navIsOpen) {
             window.removeEventListener('wheel', onMouseWheel)
             // window.removeEventListener('touchstart', startTouchMove, {passive: false})
-            // window.removeEventListener('touchmove', onMouseWheel, {passive: false})
+            window.removeEventListener('touchmove', onMouseWheel, {passive: false})
             // window.removeEventListener('touchend', endTouchMove, {passive: false})
         }
         return () => window.removeEventListener('wheel', onMouseWheel)
