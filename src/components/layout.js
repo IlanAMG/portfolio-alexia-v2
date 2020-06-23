@@ -34,6 +34,7 @@ const Layout = ({ location, title, children }) => {
   useEffect(() => {
     if (onLoad && state.theFirstTimeLoadPassed === false) {
       setPageLoad(true)
+      console.log('load')
         setTimeout(() => {
           setOpacityLoading(true)
         }, 3400)
@@ -46,7 +47,7 @@ const Layout = ({ location, title, children }) => {
           document.body.style.height = 'auto';
           dispatch({ type: 'IT_IS_PASSED'})
         }, 3900)
-    } else {
+    } else if (state.theFirstTimeLoadPassed) {
       setPageLoad(true)
     }
   }, [onLoad])
