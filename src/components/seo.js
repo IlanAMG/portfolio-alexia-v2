@@ -40,7 +40,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           property: `og:title`,
-          content: {title} + '| Portfolio',
+          content: `Alexia Amzallag | ${title}`,
         },
         {
           property: `og:description`,

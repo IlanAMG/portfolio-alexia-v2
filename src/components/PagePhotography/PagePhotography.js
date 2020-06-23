@@ -12,6 +12,7 @@ export const PagePhotography = ({ projets }) => {
     let timer = useRef(null)
     const [carousselScrollLeft, setCarousselScrollLeft] = useState(0)
     const [imgDisapear, setImgDisapear] = useState(false)
+    let startTouch = useRef(null)
 
     const handleClickNext = (coeff) => {
         //effet smooth à retravailler
@@ -66,16 +67,34 @@ export const PagePhotography = ({ projets }) => {
         }
     }
 
+    const scrollPreventDefault = (e) => {
+        e.preventDefault()
+    }
+    const startTouchMove = (e) => {
+        const start = e.changedTouches[0].clientX
+        startTouch.current = start
+    }
+    const endTouchMove = () => {
+        startTouch.current = null
+    }
+
     function onMouseWheel(e) {
         e.preventDefault()
         const currentScrollDelta = caroussel.current.scrollLeft
         setCarousselScrollLeft(currentScrollDelta)
-        if (e.deltaY !== 0) {
-            caroussel.current.scrollLeft = currentScrollDelta + (e.deltaY * 0.60);
+        if (e.deltaY) {
+            if (e.deltaY !== 0) {
+                caroussel.current.scrollLeft = currentScrollDelta + (e.deltaY * 0.60);
+            } else {
+                caroussel.current.scrollLeft = currentScrollDelta + (e.deltaX * 0.60);
+            }
         } else {
-            caroussel.current.scrollLeft = currentScrollDelta + (e.deltaX * 0.60);
+            const currentTouch = e.changedTouches[0].clientX
+            const deltaX = currentTouch - startTouch.current
+            caroussel.current.scrollLeft = currentScrollDelta - (deltaX * 0.06);
         }
     }
+
     useEffect(() => {
         if (pageLoad && !navIsOpen) {
             if (caroussel.current.scrollLeft !== null) {
@@ -89,14 +108,36 @@ export const PagePhotography = ({ projets }) => {
     }, [carousselScrollLeft])
 
     useEffect(() => {
+        window.addEventListener('scroll', scrollPreventDefault, {passive: false})
         window.addEventListener('wheel', onMouseWheel, {passive: false})
+        window.addEventListener('touchstart', startTouchMove, {passive: false})
+        window.addEventListener('touchmove', onMouseWheel, {passive: false})
+        window.addEventListener('touchend', endTouchMove, {passive: false})
     }, [navIsOpen])
     useEffect(() => {
         if (navIsOpen) {
             window.removeEventListener('wheel', onMouseWheel)
+            window.removeEventListener('touchstart', startTouchMove, {passive: false})
+            window.removeEventListener('touchmove', onMouseWheel, {passive: false})
+            window.removeEventListener('touchend', endTouchMove, {passive: false})
+            window.removeEventListener('scroll', scrollPreventDefault, {passive: false})
         }
         return () => window.removeEventListener('wheel', onMouseWheel)
     }, [navIsOpen])
+
+    useEffect(() => {
+        return () => window.removeEventListener('touchstart', startTouchMove, {passive: false})
+    }, [])
+
+    useEffect(() => {
+        return () => window.removeEventListener('touchmove', onMouseWheel, {passive: false})
+    }, [])
+    useEffect(() => {
+        return () => window.removeEventListener('touchend', endTouchMove, {passive: false})
+    }, [])
+    useEffect(() => {
+        return () => window.removeEventListener('scroll', scrollPreventDefault, {passive: false})
+    }, [])
     
     useEffect(() => {
         if (navIsOpen) {
