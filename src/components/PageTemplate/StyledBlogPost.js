@@ -34,7 +34,8 @@ const StyledBlogPost = styled.div`
     position: absolute;
         .container-credits {
             width: 100%;
-            margin: 110px 0 30px 65px;
+            margin: 110px 0 30px 0;
+            padding-left: 4.5vw;
             display: flex;
             align-items: flex-start;
             jusitfy-content: center;

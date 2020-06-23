@@ -109,7 +109,7 @@ export const PageAbout = () => {
                             {(props) => (
                                 <a name='instagram' rel="noopener noreferrer" href='https://www.instagram.com/alexiamzallag/' target='_blank' style={{ ...props }} className='wrapper-contact insta'>
                                     <AiOutlineInstagram />
-                                    <small>alexiaamzlg@gmail.com</small>
+                                    <small>@alexiamzallag</small>
                                 </a>
                             )}
                         </Spring>
