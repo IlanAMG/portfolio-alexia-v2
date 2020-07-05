@@ -5,6 +5,7 @@ import { Loading } from '../components/Loading/Loading';
 import { onLoad } from '../../gatsby-browser';
 import { PageNavigation } from './PageNavigation/PageNavigation';
 import Context from '../utils/context';
+
 import { GlobalStateContext, GlobalDispatchContext } from '../utils/GlobalContextProvider';
 
 const Layout = ({ location, title, children }) => {

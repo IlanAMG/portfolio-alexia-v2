@@ -63,6 +63,15 @@ export const PageNavigation = () => {
     const [isWheel, setIsWheel] = useState(false)
     const [touchStart, setTouchStart] = useState(null)
     const [touchEnd, setTouchEnd] = useState(null)
+    const [height, setHeight] = useState(null)
+
+    let photo = useRef()
+    let video = useRef()
+    let about = useRef()
+
+    const resizePage = () => {
+        setHeight(window.innerHeight)
+    }
 
     const handleClick = (e) => {
         e.preventDefault()
@@ -88,36 +97,39 @@ export const PageNavigation = () => {
         const touchEndY = e.changedTouches[0].clientY
         setTouchEnd(touchEndY)
     }
-
     const scrollToRefMobile = () => {
-        const toPhoto = window.innerHeight * 0.21
-        const toVideo = window.innerHeight * 0.71
-        const toAbout = window.innerHeight * 1.22
+        const toPhoto = height * 0.21
+        const toVideo = height * 0.71
+        const toAbout = height * 1.2
+
+        const forPhoto = (photo.current.getBoundingClientRect().y / height).toFixed(2)
+        const forVideo = (video.current.getBoundingClientRect().y / height).toFixed(2)
+        const forAbout = (about.current.getBoundingClientRect().y / height).toFixed(2)
 
         let cloneIsSelect = [...isSelect]
         if (touchStart !== null && touchEnd !== null) {
-            if (cloneIsSelect[0] && toPhoto <= window.pageYOffset + 1 && toPhoto >= window.pageYOffset - 1 && touchStart > touchEnd) {
+            if (cloneIsSelect[0] && touchStart > touchEnd && 1 > parseFloat(forPhoto) && 0 < parseFloat(forPhoto)) {
                 window.scrollTo({
                     top: toVideo,
                     behavior: 'smooth'
                 })
                 cloneIsSelect[0] = false
                 cloneIsSelect[1] = true
-            } else if (cloneIsSelect[2] && toAbout <= window.pageYOffset + 1 && toAbout >= window.pageYOffset - 1 && touchStart < touchEnd) {
+            } else if (cloneIsSelect[2] && touchStart < touchEnd && 1 > parseFloat(forAbout) && 0 < parseFloat(forAbout) ) {
                 window.scrollTo({
                     top: toVideo,
                     behavior: 'smooth'
                 })
                 cloneIsSelect[2] = false
                 cloneIsSelect[1] = true
-            } else if (cloneIsSelect[1] && toVideo <= window.pageYOffset + 1 && toVideo >= window.pageYOffset - 1 && touchStart < touchEnd) {
+            } else if (cloneIsSelect[1] && touchStart < touchEnd && 1 > parseFloat(forVideo) && 0 < parseFloat(forVideo)) {
                 window.scrollTo({
                     top: toPhoto,
                     behavior: 'smooth'
                 })
                 cloneIsSelect[1] = false
                 cloneIsSelect[0] = true
-            } else if (cloneIsSelect[1] && toVideo <= window.pageYOffset + 1 && toVideo >= window.pageYOffset - 1 && touchStart > touchEnd) {
+            } else if (cloneIsSelect[1] && touchStart > touchEnd && 1 > parseFloat(forVideo) && 0 < parseFloat(forVideo)) {
                 window.scrollTo({
                     top: toAbout,
                     behavior: 'smooth'
@@ -132,34 +144,39 @@ export const PageNavigation = () => {
     }
 
     const scrollToRef = (deltaY) => {
-        const toPhoto = window.innerHeight * 0.21
-        const toVideo = window.innerHeight * 0.71
-        const toAbout = window.innerHeight * 1.22
+        const toPhoto = height * 0.21
+        const toVideo = height * 0.71
+        const toAbout = height * 1.2
         const isScrollingDown = Math.sign(deltaY);
         let cloneIsSelect = [...isSelect]
+
+        const forPhoto = (photo.current.getBoundingClientRect().y / (height * 2.4346) ).toFixed(2)
+        const forVideo = (video.current.getBoundingClientRect().y / height * 2.4346).toFixed(2)
+        const forAbout = (about.current.getBoundingClientRect().y / height * 2.4346).toFixed(2)
+
         if (isWheel === false) {
-            if (cloneIsSelect[0] && isScrollingDown > 0 && Math.round(toPhoto) === window.pageYOffset) {
+            if (cloneIsSelect[0] && isScrollingDown > 0 && 1 > parseFloat(forPhoto) && 0 < parseFloat(forPhoto)) {
                 window.scrollTo({
                     top: toVideo,
                     behavior: 'smooth'
                 })
                 cloneIsSelect[0] = false
                 cloneIsSelect[1] = true
-            } else if (cloneIsSelect[2] && isScrollingDown < 0 && Math.round(toAbout) === window.pageYOffset) {
+            } else if (cloneIsSelect[2] && isScrollingDown < 0 && 1 > parseFloat(forAbout) && 0 < parseFloat(forAbout)) {
                 window.scrollTo({
                     top: toVideo,
                     behavior: 'smooth'
                 })
                 cloneIsSelect[2] = false
                 cloneIsSelect[1] = true
-            } else if (cloneIsSelect[1] && isScrollingDown < 0 && Math.round(toVideo) === window.pageYOffset) {
+            } else if (cloneIsSelect[1] && isScrollingDown < 0 && 1 > parseFloat(forVideo) && 0 < parseFloat(forVideo)) {
                 window.scrollTo({
                     top: toPhoto,
                     behavior: 'smooth'
                 })
                 cloneIsSelect[1] = false
                 cloneIsSelect[0] = true
-            } else if (cloneIsSelect[1] && isScrollingDown > 0 && Math.round(toVideo) === window.pageYOffset) {
+            } else if (cloneIsSelect[1] && isScrollingDown > 0 && 1 > parseFloat(forVideo) && 0 < parseFloat(forVideo)) {
                 window.scrollTo({
                     top: toAbout,
                     behavior: 'smooth'
@@ -171,7 +188,6 @@ export const PageNavigation = () => {
             setIsWheel(true)
         }
     }
-
     const debouncedUpdate = _.throttle(value => scrollToRef(value), 10);
     
     const preventWheel = (e) => {
@@ -197,11 +213,11 @@ export const PageNavigation = () => {
     }
     
     const detectActiveWheel = () => {
-        if (isSelect[0] && Math.round(window.innerHeight * 0.21) === window.pageYOffset) {
+        if (isSelect[0]) {
             setIsWheel(false)
-        } else if (isSelect[1] && Math.round(window.innerHeight * 0.71) === window.pageYOffset) {
+        } else if (isSelect[1]) {
             setIsWheel(false)
-        } else if (isSelect[2] && Math.round(window.innerHeight * 1.22) === window.pageYOffset) {
+        } else if (isSelect[2]) {
             setIsWheel(false)
         } else {
             setIsWheel(true)
@@ -225,15 +241,20 @@ export const PageNavigation = () => {
         window.scrollTo({
             top,
         })
+        setHeight(window.innerHeight)
     }, [openNavTransiFinish]);
 
     useEffect(() => {
         if (navIsOpen) {
             window.addEventListener('wheel', preventWheel, {passive: false})
             window.addEventListener('touchmove', preventWheel, {passive: false})
+            window.addEventListener('resize', resizePage, {passive: false})
+            window.addEventListener('keydown', preventWheel, {passive: false})
         } else {
             window.removeEventListener('wheel', preventWheel)
             window.removeEventListener('touchmove', preventWheel)
+            window.removeEventListener('resize', resizePage)
+            window.removeEventListener('keydown', preventWheel)
         }
     }, [navIsOpen, openNavTransiFinish])
 
@@ -243,6 +264,12 @@ export const PageNavigation = () => {
 
     useEffect(() => {
         return () => window.removeEventListener('touchmove', preventWheel)
+    }, [])
+    useEffect(() => {
+        return () => window.removeEventListener('resize', resizePage)
+    }, [])
+    useEffect(() => {
+        return () => window.removeEventListener('keydown', preventWheel)
     }, [])
 
     return (
@@ -256,19 +283,19 @@ export const PageNavigation = () => {
         >
             <nav>
                 <ul>
-                    <li className={`container-lien ${isSelect[0] ? 'select' : null}`} >
+                    <li ref={photo} className={`container-lien ${isSelect[0] ? 'select' : null}`} >
                         <div className='wrapper-link'>
                             <a onClick={handleClick} value='/'>PHOTOGRAPHY</a>
                             <div className='bg-hover photo'/>
                         </div>
                     </li>
-                    <li className={`container-lien ${isSelect[1] ? 'select' : null}`}>
+                    <li ref={video} className={`container-lien ${isSelect[1] ? 'select' : null}`}>
                         <div className='wrapper-link'>
                             <a onClick={handleClick} value='/videos'>VIDEOS</a>
                             <div className='bg-hover video'/>
                         </div>
                     </li>
-                    <li className={`container-lien ${isSelect[2] ? 'select' : null}`} >
+                    <li ref={about} className={`container-lien ${isSelect[2] ? 'select' : null}`} >
                         <div className='wrapper-link'>
                             <a onClick={handleClick} value='/about'>ABOUT</a>
                             <div className='bg-hover about'/>
