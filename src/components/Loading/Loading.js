@@ -62,7 +62,7 @@ export const Loading = ({ opacityLoading }) => {
             }}>
             {(props) => (
               <div style={{ ...props }} className='container-bienvenue'>
-                <h4>BIENVENUE</h4>
+                <h4>WELCOME</h4>
                 <h5>{datoCmsLoadingpage.citation}</h5>
               </div>
             )}
