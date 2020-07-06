@@ -49,7 +49,7 @@ export const CircleLoading = ({ isVisible }) => {
         if (isVisible) {
             setTimeout(() => {
                 setDelay(150)
-            }, [200])
+            }, 200)
         }
     }, [isVisible])
 

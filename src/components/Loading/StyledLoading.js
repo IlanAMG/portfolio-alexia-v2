@@ -81,6 +81,12 @@ const StyledLoading = styled.section`
             line-height: 13px;
           }
         }
+        @media (max-width: 390px) and (max-height: 730px) {
+          .container-bienvenue {
+            margin: 12vh 4vw 4vw 5vw !important;
+            width: 100vw;
+          }
+        }
         @media screen and (max-width: 400px) {
           .container-bienvenue {
             margin: 16vh 4vw 4vw 5vw;

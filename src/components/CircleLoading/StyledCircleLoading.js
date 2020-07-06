@@ -12,13 +12,29 @@ const vague = keyframes`
     }
 `
 
-const StyledLoading = styled.section`
+const StyledCircleLoading = styled.section`
     position: absolute;
     right: 4.5%;
     top: 6.25%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+        @media screen and (max-width: 370px) {
+            .container-vague, .container-vague svg {
+                display: none !important;
+                width: 0px !important;
+                min-width: 0px !important;
+            }
+        }
+        
+        @media (max-width: 390px) and (max-height: 730px) {
+            .container-vague, .container-vague svg {
+                display: none !important;
+                width: 0px !important;
+                min-width: 0px !important;
+            }
+        }
 
         .container-vague {
             width: 18vw;
@@ -27,9 +43,14 @@ const StyledLoading = styled.section`
             max-height: 300px;
             min-width: 200px;
             min-height: 200px;
+            -webkit-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
             border-radius: 50%;
             overflow: hidden;
+            -khtml-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
             ${'' /* background: #D1B4FF; */}
             left: 0;
             margin-right: 40px;
@@ -73,4 +94,4 @@ const StyledLoading = styled.section`
         }
 `
 
-export default StyledLoading
+export default StyledCircleLoading

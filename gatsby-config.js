@@ -5,6 +5,8 @@ module.exports = {
     siteUrl: `https://alexiamzallag.com`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
+    `babel-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

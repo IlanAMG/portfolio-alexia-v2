@@ -77,10 +77,10 @@ const Layout = ({ location, title, children }) => {
   return (
     <Context.Provider value={{location, pageLoad, setLoadingFinish, navIsOpen, setNavIsOpen, loadingFinish, openNavTransiFinish }} >
       <Header title={title} location={location} rootPath={rootPath} />
-      {
-        !loading && pageLoad && state.theFirstTimeLoadPassed === false &&
+      {/* {
+        !loading && pageLoad && state.theFirstTimeLoadPassed === false && */}
         <Loading opacityLoading={opacityLoading} />
-      }
+      {/* } */}
       <main>{children}</main>
       {openNavTransiFinish &&
       <PageNavigation />}

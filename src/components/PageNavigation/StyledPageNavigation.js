@@ -57,9 +57,17 @@ const StyledPageNavigation = styled.section`
         
         nav {
             position: absolute;
-            top: 50.36vh;
+            top: 20.71778vh;
+            height: 100vh;
             transition: 500ms;
-            z-index: 10;
+            z-index: 200;
+        }
+
+        ul {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            align-items: space-between;
         }
 
         .container-lien {
@@ -67,22 +75,17 @@ const StyledPageNavigation = styled.section`
             display: flex;
             justify-content: center;
             height: 42.03vh;
-            margin-bottom: 7.5vh;
             transition: 500ms;
         }
+
         ul .container-lien:nth-child(1) {
-            align-items: flex-end;
-            padding-bottom: 7vh;
-            transition: 500ms;
+            align-items: center;
         }
         ul .container-lien:nth-child(2) {
-            align-items: ${({aboutSelect}) => aboutSelect ? 'flex-end' : 'flex-start'};
-            padding-bottom: ${({aboutSelect}) => aboutSelect ? '7vh' : 0};
+            align-items: center;
         }
         ul .container-lien:nth-child(3) {
-            align-items: flex-start;
-            padding-top: 7vh;
-            transition: 500ms;
+            align-items: center;
         }
         .container-lien a {
             text-decoration: none;
@@ -97,27 +100,11 @@ const StyledPageNavigation = styled.section`
             animation: ${fadeIn} 900ms linear forwards !important;
             text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
-        .container-lien.select a {
-            font-size: 70px;
-            opacity: 0;
-            padding-bottom: 0 !important;
-            padding-top: 0 !important;
-            transition: 500ms;
-            animation: ${fadeIn} 900ms linear forwards !important;
-        }
-        .container-lien.select {
-            height: 42.03vh;
-            justify-content: center;
-            align-items: center !important;
-            display: flex;
-            padding-bottom: 0 !important;
-            padding-top: 0 !important;
-            transition: 500ms;
-        }
 
         .container-lien a:hover {
             transition: 500ms;
             opacity: 1;
+            font-size: 65px;
         }
 
         .container-lien .wrapper-link {
@@ -230,7 +217,7 @@ const StyledPageNavigation = styled.section`
             .container-lien a {
                 font-size: 36px;
             }
-            .container-lien.select a {
+            .container-lien a:hover {
                 font-size: 44px;
             }
             .wrapper-img {
@@ -242,8 +229,8 @@ const StyledPageNavigation = styled.section`
             .container-lien a {
                 font-size: 32px;
             }
-            .container-lien.select a {
-                font-size: 37px;
+            .container-lien a:hover {
+                font-size: 36px;
             }
         }
 `

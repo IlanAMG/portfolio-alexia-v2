@@ -88,3 +88,7 @@ small {
 ::-webkit-scrollbar:horizontal {
     display: none;
 }
+
+.circle.transiOff {
+    pointer-events: none;
+}
