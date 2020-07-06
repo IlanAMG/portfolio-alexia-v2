@@ -77,6 +77,11 @@ export const PageNavigation = () => {
         }
     }
 
+    const preventDefault = (e) => {
+        e.preventDefault()
+        console.log('ici')
+    }
+
     useEffect(() => {
         const top = window.innerHeight * 0.21
         setTop(top)
@@ -90,6 +95,16 @@ export const PageNavigation = () => {
             setTransiTo(null)
         }
     }, [navIsOpen])
+    useEffect(() => {
+        if (openNavTransiFinish) {
+            window.addEventListener('wheel', preventDefault, {passive: false})
+        } else {
+            window.removeEventListener('wheel', preventDefault)
+        }
+    }, [openNavTransiFinish])
+    useEffect(() => {
+        return () => window.removeEventListener('wheel', preventDefault)
+    }, [])
     
     return (
         openNavTransiFinish && 
